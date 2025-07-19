@@ -1,1 +1,1 @@
-# resnet-18-based-eeg-ahi-regression-pipeline
+# ResNet-18-Based EEG AHI Regression Pipeline

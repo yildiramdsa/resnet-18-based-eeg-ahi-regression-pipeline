@@ -25,17 +25,54 @@ def show_introduction():
     <span class="inline-badge">Sleep apnea</span> is a common <span class="inline-badge">sleep disorder</span> in which the upper airway repeatedly narrows or collapses 
     during sleep, causing pauses in breathing (apneas) or shallow breathing episodes (hypopneas). These 
     interruptions fragment sleep and reduce blood oxygen levels, leading to daytime fatigue, morning headaches, 
-    impaired concentration, and an increased risk of cardiovascular and metabolic disorders.
+    impaired concentration, and an increased risk of cardiovascular and metabolic disorders. The severity of 
+    sleep apnea is quantified by the <span class="inline-badge">Apnea-Hypopnea Index (AHI)</span>, which measures the number of breathing events per hour 
+    of sleep. Accurate AHI assessment is crucial for clinical decision-making.
     
-    In Canada, an estimated 6.4% of adults received a professional diagnosis of sleep apnea in 2016-2017, 
-    and population-based assessments suggest that nearly 28.1% of Canadians aged 45 to 85 years have moderate 
-    to severe obstructive sleep apnea (AHI ≥15 events/hour) based on STOP-BANG screening (Statistics Canada, 2018; Canadian Longitudinal Study on Aging Team, 2024).
+    The high prevalence of sleep apnea underscores the need for more accessible diagnostic tools. In Canada, 
+    an estimated 6.4% of adults received a professional diagnosis of sleep apnea in 2016-2017, while 
+    population-based assessments suggest that nearly 28.1% of Canadians aged 45 to 85 years have moderate 
+    to severe obstructive sleep apnea (AHI ≥15 events/hour) based on STOP-BANG screening (Statistics Canada, 2018; 
+    Canadian Longitudinal Study on Aging Team, 2024).
     
-    To enable scalable, automated estimation of sleep apnea severity, we propose a <span class="inline-badge">deep learning pipeline</span> 
-    that performs <span class="inline-badge">AHI regression</span> directly from windowed EEG spectrogram images. Using a <span class="inline-badge">ResNet-18 
-    convolutional neural network</span>, our approach incorporates subject-stratified training and validation 
-    splits to prevent data leakage, class-balance monitoring, learning-rate warmup, data augmentation, 
-    and early stopping. Predictions are aggregated at the subject level to yield per-individual AHI estimates suitable for clinical and research applications.
+    <span class="inline-badge">Electroencephalography (EEG)</span> offers a promising solution for automated sleep apnea assessment. As a non-invasive 
+    neuroimaging technique that records electrical activity in the brain through electrodes placed on the scalp, 
+    EEG captures the synchronized firing of neurons, producing characteristic waveforms that vary with different 
+    states of consciousness and neurological conditions. During sleep, EEG recordings reveal distinct patterns 
+    associated with different sleep stages and can detect disruptions caused by sleep disorders such as apnea. 
+    The temporal resolution of EEG (milliseconds) makes it ideal for capturing rapid changes in brain activity 
+    that occur during sleep-wake transitions and respiratory events, providing a rich source of information for 
+    automated analysis.
+    
+    However, raw EEG signals present significant challenges for automated analysis. They are highly sensitive 
+    to artifacts (muscle activity, eye movements, electrode noise), require extensive preprocessing, and contain 
+    complex temporal dependencies that are difficult for deep learning models to learn directly. <span class="inline-badge">Spectrograms</span> address 
+    these limitations by transforming the time-domain signal into a time-frequency representation that preserves 
+    both temporal and spectral information. This transformation makes sleep apnea-related patterns more visually 
+    apparent and computationally tractable, effectively highlighting frequency bands associated with different 
+    sleep stages (delta: 0.5-4 Hz, theta: 4-8 Hz, alpha: 8-13 Hz, beta: 13-30 Hz) and revealing disruptions in 
+    these patterns caused by apnea events. Additionally, spectrograms are more robust to noise and artifacts, 
+    as the frequency domain representation naturally filters out many types of interference.
+    
+    To leverage the advantages of spectrogram-based analysis, we developed a <span class="inline-badge">deep learning pipeline</span> using the 
+    <span class="inline-badge">ResNet-18 architecture</span>. This choice was motivated by several factors: its proven performance on image 
+    classification tasks makes it well-suited for spectrogram analysis, as spectrograms can be treated as 2D 
+    images where spatial patterns correspond to time-frequency relationships. The residual connections in 
+    ResNet-18 help maintain gradient flow during training, enabling effective learning of complex hierarchical 
+    features from the spectrogram data. ResNet-18's moderate depth (18 layers) provides sufficient 
+    representational capacity without overfitting on our limited medical dataset, while the availability of 
+    ImageNet pretrained weights enables effective transfer learning, allowing the model to leverage general 
+    image recognition capabilities while fine-tuning for the specific task of AHI regression. Finally, 
+    ResNet-18's computational efficiency makes it suitable for real-time clinical applications, where rapid 
+    inference is essential.
+    
+    Our approach performs <span class="inline-badge">continuous AHI regression</span> directly from windowed EEG spectrogram images, rather than 
+    categorical classification, providing more precise severity estimates that are clinically valuable. The 
+    pipeline incorporates subject-stratified training and validation splits to prevent data leakage, 
+    comprehensive quality control to ensure reliable spectrogram generation, learning-rate warmup and early 
+    stopping to optimize training, and data augmentation to improve generalization. Window-level predictions 
+    are aggregated at the subject level to yield per-individual AHI estimates suitable for clinical screening 
+    and research applications.
     """, unsafe_allow_html=True)
 
 def show_literature_review():
@@ -260,6 +297,88 @@ def show_references():
     Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. Biomedical Signal Processing and Control, 85, 104912. https://doi.org/10.1016/j.bspc.2023.104912
     """)
 
+def show_terminology():
+    st.header("Key Terms")
+    st.markdown("""
+    **AHI (Apnea-Hypopnea Index)**: A measure of sleep apnea severity that counts the number of breathing pauses or shallow breathing episodes per hour of sleep. Higher numbers mean more severe sleep apnea.
+    
+    **Alpha Waves**: Brain waves that occur when you're relaxed but awake, typically between 8-13 Hz. They're important for identifying sleep stages.
+    
+    **Apnea**: A complete pause in breathing during sleep that lasts at least 10 seconds.
+    
+    **Artifact**: Unwanted signals in EEG recordings caused by muscle movement, eye blinking, or equipment problems that can interfere with analysis.
+    
+    **Beta Waves**: Fast brain waves (13-30 Hz) that occur during active thinking and alertness.
+    
+    **C3/A2**: A specific EEG electrode placement that records brain activity from the central part of the scalp. This is the main channel used in this project.
+    
+    **Classification**: A type of prediction that puts data into categories (like normal/mild/moderate/severe) rather than estimating specific numbers.
+    
+    **Convolutional Neural Network (CNN)**: A type of neural network designed to analyze images by looking for patterns in small sections of the image.
+    
+    **Cross-Validation**: A method to test how well a model works by training it on different parts of the data and testing on the remaining parts.
+    
+    **Data Augmentation**: Techniques to create more training data by making small changes to existing data (like flipping images or adjusting brightness).
+    
+    **Deep Learning**: A type of artificial intelligence that uses computer networks to learn patterns from data, similar to how the human brain learns.
+    
+    **Delta Waves**: Slow brain waves (0.5-4 Hz) that occur during deep sleep and are important for restorative sleep.
+    
+    **Early Stopping**: A technique that stops training when the model stops improving, preventing overfitting.
+    
+    **EEG (Electroencephalography)**: A test that records electrical activity in the brain using small sensors placed on the scalp. It's painless and non-invasive.
+    
+    **FFT (Fast Fourier Transform)**: A mathematical technique that converts time-based signals into frequency-based information, used to create spectrograms.
+    
+    **Frequency Bands**: Different ranges of brain wave frequencies that correspond to different mental states (delta, theta, alpha, beta).
+    
+    **Hypopnea**: A partial reduction in breathing during sleep that lasts at least 10 seconds and causes a drop in oxygen levels.
+    
+    **ImageNet**: A large database of images used to pre-train computer vision models, which helps them learn general image recognition skills.
+    
+    **Learning Rate**: How quickly a neural network learns from data. Too fast can cause instability, too slow can take too long to train.
+    
+    **MAE (Mean Absolute Error)**: A measure of prediction accuracy that shows the average difference between predicted and actual values.
+    
+    **Neural Network**: A computer system designed to work like the human brain, made up of connected nodes that process information.
+    
+    **Obstructive Sleep Apnea**: The most common type of sleep apnea, caused by the throat muscles relaxing and blocking the airway.
+    
+    **Overfitting**: When a model learns the training data too well but fails to generalize to new, unseen data.
+    
+    **Pearson Correlation**: A measure of how well two variables (like predicted and actual AHI) move together, ranging from -1 to +1.
+    
+    **Polysomnography**: A comprehensive sleep study that records multiple body functions during sleep, including brain activity, breathing, and heart rate.
+    
+    **Regression**: A type of prediction that estimates a continuous number (like AHI) rather than just categories (like mild/moderate/severe).
+    
+    **ResNet-18**: A specific type of neural network with 18 layers that's good at analyzing images and finding patterns in them.
+    
+    **Residual Connections**: Shortcuts in neural networks that help information flow better and make training more stable.
+    
+    **RMSE (Root Mean Square Error)**: A measure of prediction accuracy that penalizes larger errors more heavily than smaller ones.
+    
+    **SHHS-1 (Sleep Heart Health Study)**: A large research study that collected sleep data from thousands of participants, used as the dataset for this project.
+    
+    **Sleep Apnea**: A sleep disorder where breathing repeatedly stops and starts during sleep, often causing loud snoring and daytime tiredness.
+    
+    **Sleep Stages**: Different phases of sleep (light sleep, deep sleep, REM sleep) that have distinct brain wave patterns.
+    
+    **Spectrogram**: A visual representation of sound or brain signals that shows how different frequencies change over time. It's like a "picture" of the signal.
+    
+    **STFT (Short-Time Fourier Transform)**: A mathematical technique used to create spectrograms by analyzing how frequencies change over short time windows.
+    
+    **Subject-Stratified**: A way of organizing data so that all data from the same person stays together in either training or testing, preventing data leakage.
+    
+    **Theta Waves**: Brain waves (4-8 Hz) that occur during light sleep and drowsiness.
+    
+    **Transfer Learning**: A technique where a computer model that's already learned from one type of data (like general images) is adapted to work with new data (like brain signal images).
+    
+    **Validation**: The process of testing how well a computer model works on data it hasn't seen before, to make sure it can make accurate predictions in real situations.
+    
+    **Window**: A short segment of time (like 30 seconds) used to analyze brain signals, allowing the computer to focus on specific patterns.
+    """)
+
 def main():
     st.title("ResNet-18-Based EEG AHI Regression Pipeline")
 
@@ -276,14 +395,15 @@ def main():
     </style>
     """, unsafe_allow_html=True)
 
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
         "Abstract", 
         "Introduction", 
         "Literature Review", 
         "Materials & Methods", 
         "Results & Discussion", 
         "Conclusion", 
-        "References"
+        "References",
+        "Key Terms"
     ])
 
     with tab1:
@@ -300,6 +420,8 @@ def main():
         show_conclusion()
     with tab7:
         show_references()
+    with tab8:
+        show_terminology()
 
 if __name__ == "__main__":
     main()

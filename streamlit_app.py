@@ -378,7 +378,7 @@ def show_references():
     st.markdown("""
     Canadian Longitudinal Study on Aging Team. (2024). Prevalence and regional distribution of obstructive sleep apnea in Canada: Analysis from the Canadian Longitudinal Study on Aging. *Canadian Journal of Public Health, 115*(6), 970–979. https://doi.org/10.17269/s41997-024-00911-8
 
-    Gawhale, S., Upasani, D. E., Chaudhari, L., Khankal, D. V., Kumar, J. R., & Upadhye, V. A. (2023). EEG signal processing for the identification of sleeping disorder using hybrid deep learning with ensemble machine learning classifier. *International Journal of Intelligent Systems and Applications in Engineering, 11*(10 Suppl.), 113–129. Retrieved from https://ijisae.org/index.php/IJISAE/article/view/3239
+    Gawhale, S., Upasani, D. E., Chaudhari, L., Khankal, D. V., Kumar, J. R., & Upadhye, V. A. (2023). EEG signal processing for the identification of sleeping disorder using hybrid deep learning with ensemble machine learning classifier. *International Journal of Intelligent Systems and Applications in Engineering, 11*(10 Suppl.), 113–129. https://ijisae.org/index.php/IJISAE/article/view/3239
 
     Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., … Stanley, H. E. (n.d.). *University College Dublin Sleep Apnea Database (UCDDB)* [Data set]. PhysioNet. https://archive.physionet.org/physiobank/database/ucddb/
 
@@ -396,7 +396,7 @@ def show_references():
 
     Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv preprint*, *arXiv:1610.01683*. https://arxiv.org/abs/1610.01683
 
-    Uddin Wara, T., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2025). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *arXiv preprint*, *arXiv:2405.11008*. https://doi.org/10.48550/arXiv.2405.11008
+    Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2025). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *arXiv preprint*, *arXiv:2405.11008*. https://doi.org/10.48550/arXiv.2405.11008
 
     Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. *arXiv preprint*, *arXiv:2204.06997*. https://arxiv.org/abs/2204.06997
     """)

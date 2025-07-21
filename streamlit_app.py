@@ -217,6 +217,12 @@ def show_literature_review():
     The <span class="inline-badge">prediction and evaluation</span> process operates at two levels: individual 30-second window predictions are generated first, then aggregated at the subject level by averaging to yield per-individual AHI estimates. This approach provides continuous AHI regression output rather than categorical classification, offering more clinically relevant precision for severity assessment. Performance is evaluated using standard regression metrics including Root Mean Square Error (RMSE), Mean Absolute Error (MAE), and Pearson correlation coefficient.
 
     Our approach offers several key advantages over classification-based methods. The <span class="inline-badge">data leakage prevention</span> through subject-stratified splits ensures realistic validation performance that generalizes to unseen individuals. The <span class="inline-badge">clinical relevance</span> of continuous AHI estimates provides precise severity assessment suitable for treatment planning and monitoring. Comprehensive <span class="inline-badge">quality assurance</span> measures ensure reliable spectrogram generation and model training. Finally, the <span class="inline-badge">scalable design</span> using single-channel EEG makes the pipeline suitable for clinical deployment in various healthcare settings.
+
+    """, unsafe_allow_html=True)
+
+    st.image("assets/ahi_regression_pipeline.png", use_container_width=True)
+    st.markdown("""
+    *Figure: Overview of the ResNet-18-based EEG AHI regression pipeline. The process begins with raw EEG signals, which are segmented, transformed into spectrograms, processed by a deep learning model, and yield continuous AHI predictions.*
     """, unsafe_allow_html=True)
 
 def show_methods():

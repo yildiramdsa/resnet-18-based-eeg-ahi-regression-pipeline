@@ -392,7 +392,7 @@ def show_references():
 
     Statistics Canada. (2018). *Sleep apnea in Canada, 2016 and 2017* [Health fact sheet]. Government of Canada. https://www150.statcan.gc.ca/n1/pub/82-625-x/2018001/article/54979-eng.htm
 
-    Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. *Biomedical Signal Processing and Control, 85*, 104912. https://doi.org/10.7717/peerj-cs.2718
+    Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. *PeerJ Computer Science, 11*, e2718. https://doi.org/10.7717/peerj-cs.2718
 
     Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv preprint*, *arXiv:1610.01683*. https://arxiv.org/abs/1610.01683
 

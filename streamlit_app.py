@@ -127,7 +127,7 @@ def show_literature_review():
     To illustrate the relationship between raw EEG signals and their spectrogram representations, Tanci and Hekim (2025) provide visual examples for each sleep apnea severity class. These examples demonstrate how different patterns in the time domain correspond to distinct frequency-domain characteristics.
     """, unsafe_allow_html=True)
     
-    st.image("assets/tanci_hekim_eeg_spectrograms.jpg", use_container_width=True)
+    st.image("assets/tanci_hekim_eeg_spectrograms.png", use_container_width=True)
     
     st.markdown("""
     *Figure: EEG signals and spectrogram examples for different sleep apnea severity levels: (A) Mild, (B) Moderate, (C) Severe, and (D) Healthy. Each panel displays a raw EEG signal (left) and its corresponding time-frequency representation (spectrogram, right), illustrating the visual patterns associated with varying degrees of sleep apnea. The spectrograms are from 30-second time slices containing representative samples from each class, enabling clear visual comparison of patterns between severity categories.*

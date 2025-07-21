@@ -96,12 +96,42 @@ def show_literature_review():
 
     The dataset used in this study is C3-A2 channel EEG signals from PSG recordings in the Physionet database (PhysioBank ATM), comprising data from 25 subjects with varying degrees of sleep apnea severity. The C3-A2 electrode placement offers a clinically standard, high-quality window into the brain's response to breathing disruptions, while keeping preprocessing and model complexity manageable. This single-channel approach captures the essential neural signatures associated with sleep apnea events without the computational overhead of multi-channel analysis, making it suitable for both research and potential clinical deployment.
 
+    **Spectrogram Generation Methodology**
+
+    Tanci and Hekim (2025) provide a detailed mathematical foundation for their spectrogram generation approach. The spectrogram represents the frequencies where the energy of the signal is maximum, effectively transforming the two-dimensional EEG waveform into a three-dimensional time-frequency representation. In other words, a spectrogram shows the energy change of a signal over time, defined as the power distribution of the Short-Time Fourier Transform (STFT).
+
+    For the STFT application, a moving window function g(t−τ) is applied to the signal x(t) at time τ. Each window is moved by τ in the time domain, and these changes in the time interval are displayed in the windows. The STFT is mathematically defined as:
+
+    **X(τ,f) = ∫<sub>-∞</sub><sup>∞</sup> x(t)g(t−τ)e<sup>-j2πft</sup>dt**
+
+    Where:
+    - **x(t)**: Analyzed signal (EEG waveform)
+    - **g(t−τ)**: Windowing function (Hann window in their implementation)
+    - **τ**: Time-shifting parameter
+    - **f**: Frequency parameter
+    - **e<sup>-j2πft</sup>**: Complex exponential function used in the Fourier transform
+
+    This integral allows the signal to be analyzed over a given time interval (τ) and at a given frequency (f), enabling simultaneous analysis of both time and frequency information. When g(t−τ) is considered a windowing function, the STFT analyzes both the time and frequency information of a signal simultaneously, providing the foundation for spectrogram generation.
+
     Their approach follows a comprehensive deep learning classification pipeline, as illustrated in their article, which transforms raw EEG signals through multiple processing stages to produce categorical sleep apnea severity classifications.
 
     *Figure: Tanci & Hekim's (2025) deep learning classification pipeline for sleep apnea severity detection. The process begins with raw EEG signals, which are segmented into 30-second windows, converted to spectrograms for time-frequency analysis, processed through deep learning models, and finally classified into severity categories (normal, mild, moderate, severe).*
     """, unsafe_allow_html=True)
     
-    st.image("assets/tanci_hekim_pipeline.jpg", use_container_width=True)
+    st.image("assets/tanci_hekim_pipeline.png", use_container_width=True)
+    
+    st.markdown("""
+    
+    **Visual Examples of EEG Signals and Spectrograms**
+
+    To illustrate the relationship between raw EEG signals and their spectrogram representations, Tanci and Hekim (2025) provide visual examples for each sleep apnea severity class. These examples demonstrate how different patterns in the time domain correspond to distinct frequency-domain characteristics.
+    """, unsafe_allow_html=True)
+    
+    st.image("assets/tanci_hekim_eeg_spectrograms.jpg", use_container_width=True)
+    
+    st.markdown("""
+    *Figure: EEG signals and spectrogram examples for different sleep apnea severity levels: (A) Mild, (B) Moderate, (C) Severe, and (D) Healthy. Each panel displays a raw EEG signal (left) and its corresponding time-frequency representation (spectrogram, right), illustrating the visual patterns associated with varying degrees of sleep apnea. The spectrograms are from 30-second time slices containing representative samples from each class, enabling clear visual comparison of patterns between severity categories.*
+    """, unsafe_allow_html=True)
     
     st.markdown("""
 

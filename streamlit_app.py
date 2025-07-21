@@ -107,6 +107,35 @@ def show_literature_review():
 
     We recreated Tanci and Hekim's (2025) exact spectrogram setup in simple steps: we cut the C3A2 EEG into 30-second chunks, ran a Hann-window STFT with a 256-point FFT and 50% overlap, converted the results to decibels, and skipped any chunk that had empty (all-floor) columns. We saved these spectrograms as 150 dpi viridis PNGs and then ran them through each of their published models—ResNet64, YOLOv5, and YOLOv8—to classify sleep apnea severity. Finally, we evaluated each model on a balanced hold-out test set of 400 samples (100 per class) to compare their performance.
 
+    **Our ResNet-18-Based AHI Regression Pipeline**
+
+    In contrast to Tanci and Hekim's classification approach, our research implements a comprehensive regression pipeline for continuous AHI estimation. The key components of our methodology include:
+
+    **Data Processing Pipeline:**
+    - **Raw EEG Signals**: C3/A2 channel from SHHS-1 dataset (100 subjects)
+    - **Signal Segmentation**: 30-second windows with 50% overlap (AASM standard)
+    - **Quality Control**: Variance filtering (std > 5.0, < 200.0) and artifact rejection
+    - **Spectrogram Generation**: STFT with 256-point FFT, Hann window, global normalization
+    - **Image Processing**: 224×224 PNG spectrograms with viridis colormap
+
+    **Deep Learning Architecture:**
+    - **ResNet-18 Backbone**: ImageNet pretrained with transfer learning
+    - **Custom Regression Head**: Single AHI output (continuous prediction)
+    - **Training Strategy**: Subject-stratified 5-fold cross-validation
+    - **Optimization**: Learning rate warmup, early stopping, data augmentation
+
+    **Prediction & Evaluation:**
+    - **Window-Level Analysis**: Individual 30-second window predictions
+    - **Subject Aggregation**: Average predictions per individual
+    - **Continuous Output**: AHI regression (not categorical classification)
+    - **Performance Metrics**: RMSE, MAE, Pearson correlation
+
+    **Key Advantages:**
+    - **Data Leakage Prevention**: Subject-stratified splits ensure realistic validation
+    - **Clinical Relevance**: Continuous AHI estimates provide precise severity assessment
+    - **Quality Assurance**: Comprehensive preprocessing ensures reliable spectrograms
+    - **Scalable Design**: Single-channel approach suitable for clinical deployment
+
     <span class="inline-badge">ResNet64 Performance Analysis</span>. **ResNet64** achieved a balanced accuracy of 85.50%, with macro-averaged precision of 0.8703, recall of 0.8550, and F1-score of 0.8555. Per-class performance was strongest for severe apnea (precision = 0.91, recall = 0.92, F1 = 0.92) and weakest for mild cases (precision = 0.75, recall = 0.94, F1 = 0.84).
     """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)

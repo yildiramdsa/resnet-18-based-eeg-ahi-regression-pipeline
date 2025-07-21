@@ -118,7 +118,12 @@ def show_literature_review():
     *Figure: Tanci & Hekim's (2025) deep learning classification pipeline for sleep apnea severity detection. The process begins with raw EEG signals, which are segmented into 30-second windows, converted to spectrograms for time-frequency analysis, processed through deep learning models, and finally classified into severity categories (normal, mild, moderate, severe).*
     """, unsafe_allow_html=True)
     
-    st.image("assets/tanci_hekim_pipeline.png", use_container_width=True)
+    col1, col2, col3 = st.columns([1, 10, 1])
+    with col2:
+        st.image("assets/tanci_hekim_pipeline.png", use_container_width=True)
+    st.markdown("""
+    *Figure: Tanci & Hekim's (2025) deep learning classification pipeline for sleep apnea severity detection. The process begins with raw EEG signals, which are segmented into 30-second windows, converted to spectrograms for time-frequency analysis, processed through deep learning models, and finally classified into severity categories (normal, mild, moderate, severe).*
+    """, unsafe_allow_html=True)
     
     st.markdown("""
     
@@ -127,8 +132,9 @@ def show_literature_review():
     To illustrate the relationship between raw EEG signals and their spectrogram representations, Tanci and Hekim (2025) provide visual examples for each sleep apnea severity class. These examples demonstrate how different patterns in the time domain correspond to distinct frequency-domain characteristics.
     """, unsafe_allow_html=True)
     
-    st.image("assets/tanci_hekim_eeg_spectrograms.png", use_container_width=True)
-    
+    col1, col2, col3 = st.columns([1, 10, 1])
+    with col2:
+        st.image("assets/tanci_hekim_eeg_spectrograms.png", use_container_width=True)
     st.markdown("""
     *Figure: EEG signals and spectrogram examples for different sleep apnea severity levels: (A) Mild, (B) Moderate, (C) Severe, and (D) Healthy. Each panel displays a raw EEG signal (left) and its corresponding time-frequency representation (spectrogram, right), illustrating the visual patterns associated with varying degrees of sleep apnea. The spectrograms are from 30-second time slices containing representative samples from each class, enabling clear visual comparison of patterns between severity categories.*
     """, unsafe_allow_html=True)

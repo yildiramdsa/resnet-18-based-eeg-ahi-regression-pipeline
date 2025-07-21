@@ -137,7 +137,19 @@ def show_literature_review():
 
     We recreated Tanci and Hekim's (2025) exact spectrogram setup in simple steps: we cut the C3A2 EEG into 30-second chunks, ran a Hann-window STFT with a 256-point FFT and 50% overlap, converted the results to decibels, and skipped any chunk that had empty (all-floor) columns. We saved these spectrograms as 150 dpi viridis PNGs and then ran them through each of their published models—ResNet64, YOLOv5, and YOLOv8—to classify sleep apnea severity. Finally, we evaluated each model on a balanced hold-out test set of 400 samples (100 per class) to compare their performance.
 
-    <span class="inline-badge">ResNet64 Performance Analysis</span>. **ResNet64** achieved a balanced accuracy of 85.50%, with macro-averaged precision of 0.8703, recall of 0.8550, and F1-score of 0.8555. Per-class performance was strongest for severe apnea (precision = 0.91, recall = 0.92, F1 = 0.92) and weakest for mild cases (precision = 0.75, recall = 0.94, F1 = 0.84).
+    <span class="inline-badge">ResNet64 Performance Analysis</span>. **ResNet64** achieved a balanced accuracy of 85.50%, with macro-averaged precision of 0.8703, recall of 0.8550, and F1-score of 0.8555. The model demonstrated strong discriminative capabilities across all classes, as evidenced by high AUC values ranging from 0.95 to 0.99 and Average Precision values from 0.90 to 0.97.
+
+    **Per-Class Performance Breakdown:**
+
+    **Severe Apnea** (Best Performance): The model achieved exceptional performance for severe cases with precision = 0.91, recall = 0.92, and F1-score = 0.92. The confusion matrix reveals that 92 out of 100 true severe cases were correctly classified (92.0% accuracy), with only 7% misclassified as mild and 1% as moderate. The ROC curve shows an AUC of 0.99, and the Precision-Recall curve demonstrates an Average Precision of 0.97, indicating near-perfect discriminative power for this critical severity level.
+
+    **Normal Cases** (High Precision): The normal class showed excellent performance with perfect precision (1.00), meaning no other classes were misclassified as normal. However, the recall was 75% (75 out of 100 true normal cases correctly identified), with 9% misclassified as mild, 14% as moderate, and 2% as severe. The ROC curve achieved an AUC of 0.99, and the Precision-Recall curve shows an Average Precision of 0.97, highlighting the model's strong ability to avoid false positives for normal cases.
+
+    **Moderate Apnea** (Moderate Performance): Moderate cases showed balanced performance with precision = 0.82, recall = 0.81, and F1-score = 0.81. The confusion matrix indicates 81 out of 100 true moderate cases were correctly classified, with 15% misclassified as mild and 4% as severe. The ROC curve shows an AUC of 0.95, and the Precision-Recall curve demonstrates an Average Precision of 0.90, reflecting the model's solid but slightly lower discriminative power for this intermediate severity level.
+
+    **Mild Apnea** (Weakest Performance): Mild cases showed the most challenging performance with precision = 0.75, recall = 0.94, and F1-score = 0.84. While the model correctly identified 94 out of 100 true mild cases (high recall), it suffered from false positives where 15 moderate and 9 normal cases were incorrectly predicted as mild. The ROC curve shows an AUC of 0.97, and the Precision-Recall curve demonstrates an Average Precision of 0.92, indicating good discriminative power but challenges in maintaining high precision.
+
+    **Overall Assessment:** ResNet64 demonstrates robust performance across all sleep apnea severity classes, with particularly strong performance for severe and normal cases. The model's ability to achieve high AUC values (0.95-0.99) across all classes indicates excellent discriminative capabilities, while the varying precision-recall trade-offs reflect the inherent challenges in distinguishing between adjacent severity categories, particularly between mild and moderate cases.
     """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     with col1:

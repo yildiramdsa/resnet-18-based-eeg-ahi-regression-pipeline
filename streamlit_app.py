@@ -220,10 +220,12 @@ def show_literature_review():
 
     """, unsafe_allow_html=True)
 
-    st.image("assets/ahi_regression_pipeline.png", use_container_width=True)
-    st.markdown("""
-    *Figure: Overview of the ResNet-18-based EEG AHI regression pipeline. The process begins with raw EEG signals, which are segmented, transformed into spectrograms, processed by a deep learning model, and yield continuous AHI predictions.*
-    """, unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.image("assets/ahi_regression_pipeline.png", use_container_width=True)
+        st.markdown("""
+        *Figure: Overview of the ResNet-18-based EEG AHI regression pipeline. The process begins with raw EEG signals, which are segmented, transformed into spectrograms, processed by a deep learning model, and yield continuous AHI predictions.*
+        """, unsafe_allow_html=True)
 
 def show_methods():
     st.header("Materials & Methods")

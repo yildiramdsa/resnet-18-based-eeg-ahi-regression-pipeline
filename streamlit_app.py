@@ -404,83 +404,83 @@ def show_references():
 def show_terminology():
     st.header("Key Terms")
     st.markdown("""
-    <span class="inline-badge">AHI (Apnea-Hypopnea Index)</span>: A measure of sleep apnea severity that counts the number of breathing pauses or shallow breathing episodes per hour of sleep. Higher numbers mean more severe sleep apnea.
+    <span class="inline-badge">AHI (Apnea-Hypopnea Index)</span> A measure of sleep apnea severity that counts the number of breathing pauses or shallow breathing episodes per hour of sleep. Higher numbers mean more severe sleep apnea.
     
-    **Alpha Waves**: Brain waves that occur when you're relaxed but awake, typically between 8-13 Hz. They're important for identifying sleep stages.
+    <span class="inline-badge">Alpha Waves</span> Brain waves that occur when you're relaxed but awake, typically between 8-13 Hz. They're important for identifying sleep stages.
     
-    **Apnea**: A complete pause in breathing during sleep that lasts at least 10 seconds.
+    <span class="inline-badge">Apnea</span> A complete pause in breathing during sleep that lasts at least 10 seconds.
     
-    **Artifact**: Unwanted signals in EEG recordings caused by muscle movement, eye blinking, or equipment problems that can interfere with analysis.
+    <span class="inline-badge">Artifact</span> Unwanted signals in EEG recordings caused by muscle movement, eye blinking, or equipment problems that can interfere with analysis.
     
-    **Beta Waves**: Fast brain waves (13-30 Hz) that occur during active thinking and alertness.
+    <span class="inline-badge">Beta Waves</span> Fast brain waves (13-30 Hz) that occur during active thinking and alertness.
     
-    **C3/A2**: A specific EEG electrode placement that records brain activity from the central part of the scalp. This is the main channel used in this project.
+    <span class="inline-badge">C3/A2</span> A specific EEG electrode placement that records brain activity from the central part of the scalp. This is the primary channel used in this project.
     
-    **Classification**: A type of prediction that puts data into categories (like normal/mild/moderate/severe) rather than estimating specific numbers.
+    <span class="inline-badge">Classification</span> A type of prediction that puts data into categories (like normal/mild/moderate/severe) rather than estimating specific numbers.
     
-    **Convolutional Neural Network (CNN)**: A type of neural network designed to analyze images by looking for patterns in small sections of the image.
+    <span class="inline-badge">Convolutional Neural Network (CNN)</span> A type of neural network designed to analyze images by looking for patterns in small sections of the image.
     
-    **Cross-Validation**: A method to test how well a model works by training it on different parts of the data and testing on the remaining parts.
+    <span class="inline-badge">Cross-Validation</span> A method to test how well a model works by training it on different parts of the data and testing on the remaining parts.
     
-    **Data Augmentation**: Techniques to create more training data by making small changes to existing data (like flipping images or adjusting brightness).
+    <span class="inline-badge">Data Augmentation</span> Techniques to create more training data by making small changes to existing data (like flipping images or adjusting brightness).
     
-    **Deep Learning**: A type of artificial intelligence that uses computer networks to learn patterns from data, similar to how the human brain learns.
+    <span class="inline-badge">Deep Learning</span> A type of artificial intelligence that uses computer networks to learn patterns from data, similar to how the human brain learns.
     
-    **Delta Waves**: Slow brain waves (0.5-4 Hz) that occur during deep sleep and are important for restorative sleep.
+    <span class="inline-badge">Delta Waves</span> Slow brain waves (0.5-4 Hz) that occur during deep sleep and are important for restorative sleep.
     
-    **Early Stopping**: A technique that stops training when the model stops improving, preventing overfitting.
+    <span class="inline-badge">Early Stopping</span> A technique that stops training when the model stops improving, preventing overfitting.
     
-    **EEG (Electroencephalography)**: A test that records electrical activity in the brain using small sensors placed on the scalp. It's painless and non-invasive.
+    <span class="inline-badge">EEG (Electroencephalography)</span> A test that records electrical activity in the brain using small sensors placed on the scalp. It's painless and non-invasive.
     
-    **FFT (Fast Fourier Transform)**: A mathematical technique that converts time-based signals into frequency-based information, used to create spectrograms.
+    <span class="inline-badge">FFT (Fast Fourier Transform)</span> A mathematical technique that converts time-based signals into frequency-based information, used to create spectrograms.
     
-    **Frequency Bands**: Different ranges of brain wave frequencies that correspond to different mental states (delta, theta, alpha, beta).
+    <span class="inline-badge">Frequency Bands</span> Different ranges of brain wave frequencies that correspond to different mental states (delta, theta, alpha, beta).
     
-    **Hypopnea**: A partial reduction in breathing during sleep that lasts at least 10 seconds and causes a drop in oxygen levels.
+    <span class="inline-badge">Hypopnea</span> A partial reduction in breathing during sleep that lasts at least 10 seconds and causes a drop in oxygen levels.
     
-    **ImageNet**: A large database of images used to pre-train computer vision models, which helps them learn general image recognition skills.
+    <span class="inline-badge">ImageNet</span> An extensive database of images used to pre-train computer vision models, which helps them learn general image recognition skills.
     
-    **Learning Rate**: How quickly a neural network learns from data. Too fast can cause instability, too slow can take too long to train.
+    <span class="inline-badge">Learning Rate</span> How quickly a neural network learns from data. Too fast can cause instability, and too slow can take too long to train.
     
-    **MAE (Mean Absolute Error)**: A measure of prediction accuracy that shows the average difference between predicted and actual values.
+    <span class="inline-badge">MAE (Mean Absolute Error)</span> A measure of prediction accuracy that shows the average difference between predicted and actual values.
     
-    **Neural Network**: A computer system designed to work like the human brain, made up of connected nodes that process information.
+    <span class="inline-badge">Neural Network</span> A computer system designed to work like the human brain, made up of connected nodes that process information.
     
-    **Obstructive Sleep Apnea**: The most common type of sleep apnea, caused by the throat muscles relaxing and blocking the airway.
+    <span class="inline-badge">Obstructive Sleep Apnea</span> The most common type of sleep apnea, caused by the throat muscles relaxing and blocking the airway.
     
-    **Overfitting**: When a model learns the training data too well but fails to generalize to new, unseen data.
+    <span class="inline-badge">Overfitting</span> When a model learns the training data too well but fails to generalize to new, unseen data.
     
-    **Pearson Correlation**: A measure of how well two variables (like predicted and actual AHI) move together, ranging from -1 to +1.
+    <span class="inline-badge">Pearson Correlation</span> A measure of how well two variables (like predicted and actual AHI) move together, ranging from -1 to +1.
     
-    **Polysomnography**: A comprehensive sleep study that records multiple body functions during sleep, including brain activity, breathing, and heart rate.
+    <span class="inline-badge">Polysomnography</span> A comprehensive sleep study that records multiple body functions during sleep, including brain activity, breathing, and heart rate.
     
-    **Regression**: A type of prediction that estimates a continuous number (like AHI) rather than just categories (like mild/moderate/severe).
+    <span class="inline-badge">Regression</span> A type of prediction that estimates a continuous number (like AHI) rather than just categories (like mild/moderate/severe).
     
-    **ResNet-18**: A specific type of neural network with 18 layers that's good at analyzing images and finding patterns in them.
+    <span class="inline-badge">ResNet-18</span> A specific type of neural network with 18 layers that's good at analyzing images and finding patterns in them.
     
-    **Residual Connections**: Shortcuts in neural networks that help information flow better and make training more stable.
+    <span class="inline-badge">Residual Connections</span> Shortcuts in neural networks that help information flow better and make training more stable.
     
-    **RMSE (Root Mean Square Error)**: A measure of prediction accuracy that penalizes larger errors more heavily than smaller ones.
+    <span class="inline-badge">RMSE (Root Mean Square Error)</span> A measure of prediction accuracy that penalizes larger errors more heavily than smaller ones.
     
-    **SHHS-1 (Sleep Heart Health Study)**: A large research study that collected sleep data from thousands of participants, used as the dataset for this project.
+    <span class="inline-badge">SHHS-1 (Sleep Heart Health Study)</span> An extensive research study that collected sleep data from thousands of participants, which was used as the dataset for this project.
     
-    **Sleep Apnea**: A sleep disorder where breathing repeatedly stops and starts during sleep, often causing loud snoring and daytime tiredness.
+    <span class="inline-badge">Sleep Apnea</span> A sleep disorder where breathing repeatedly stops and starts during sleep, often causing loud snoring and daytime tiredness.
     
-    **Sleep Stages**: Different phases of sleep (light sleep, deep sleep, REM sleep) that have distinct brain wave patterns.
+    <span class="inline-badge">Sleep Stages</span> Different phases of sleep (light sleep, deep sleep, REM sleep) that have distinct brain wave patterns.
     
-    **Spectrogram**: A visual representation of sound or brain signals that shows how different frequencies change over time. It's like a "picture" of the signal.
+    <span class="inline-badge">Spectrogram</span> A visual representation of sound or brain signals that shows how different frequencies change over time. It's like a "picture" of the signal.
     
-    **STFT (Short-Time Fourier Transform)**: A mathematical technique used to create spectrograms by analyzing how frequencies change over short time windows.
+    <span class="inline-badge">STFT (Short-Time Fourier Transform)</span> A mathematical technique used to create spectrograms by analyzing how frequencies change over short time windows.
     
-    **Subject-Stratified**: A way of organizing data so that all data from the same person stays together in either training or testing, preventing data leakage.
+    <span class="inline-badge">Subject-Stratified</span> A way of organizing data so that all data from the same person stays together in either training or testing, preventing data leakage.
     
-    **Theta Waves**: Brain waves (4-8 Hz) that occur during light sleep and drowsiness.
+    <span class="inline-badge">Theta Waves</span> Brain waves (4-8 Hz) that occur during light sleep and drowsiness.
     
-    **Transfer Learning**: A technique where a computer model that's already learned from one type of data (like general images) is adapted to work with new data (like brain signal images).
+    <span class="inline-badge">Transfer Learning</span> A technique where a computer model that's already learned from one type of data (like general images) is adapted to work with new data (like brain signal images).
     
-    **Validation**: The process of testing how well a computer model works on data it hasn't seen before, to make sure it can make accurate predictions in real situations.
+    <span class="inline-badge">Validation</span> The process of testing how well a computer model works on data it hasn't seen before, to make sure it can make accurate predictions in real situations.
     
-    **Window**: A short segment of time (like 30 seconds) used to analyze brain signals, allowing the computer to focus on specific patterns.
+    <span class="inline-badge">Window</span> A short segment of time (like 30 seconds) used to analyze brain signals, allowing the computer to focus on specific patterns.
     """, unsafe_allow_html=True)
 
 def main():

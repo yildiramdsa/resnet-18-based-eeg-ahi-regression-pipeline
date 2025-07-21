@@ -481,7 +481,7 @@ def show_terminology():
     **Validation**: The process of testing how well a computer model works on data it hasn't seen before, to make sure it can make accurate predictions in real situations.
     
     **Window**: A short segment of time (like 30 seconds) used to analyze brain signals, allowing the computer to focus on specific patterns.
-    """)
+    """, unsafe_allow_html=True)
 
 def main():
     st.title("ResNet-18-Based EEG AHI Regression Pipeline")

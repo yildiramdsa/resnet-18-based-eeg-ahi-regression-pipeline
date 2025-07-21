@@ -404,7 +404,7 @@ def show_references():
 def show_terminology():
     st.header("Key Terms")
     st.markdown("""
-    **AHI (Apnea-Hypopnea Index)**: A measure of sleep apnea severity that counts the number of breathing pauses or shallow breathing episodes per hour of sleep. Higher numbers mean more severe sleep apnea.
+    <span class="inline-badge">AHI (Apnea-Hypopnea Index)</span>: A measure of sleep apnea severity that counts the number of breathing pauses or shallow breathing episodes per hour of sleep. Higher numbers mean more severe sleep apnea.
     
     **Alpha Waves**: Brain waves that occur when you're relaxed but awake, typically between 8-13 Hz. They're important for identifying sleep stages.
     

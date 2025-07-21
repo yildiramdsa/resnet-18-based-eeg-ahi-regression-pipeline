@@ -376,29 +376,29 @@ def show_conclusion():
 def show_references():
     st.header("References")
     st.markdown("""
-    Canadian Longitudinal Study on Aging Team. (2024). Prevalence and regional distribution of obstructive sleep apnea in Canada: Analysis from the Canadian Longitudinal Study on Aging. Canadian Journal of Public Health, 115(6), 970-979. https://doi.org/10.17269/s41997-024-00911-8
+    Canadian Longitudinal Study on Aging Team. (2024). Prevalence and regional distribution of obstructive sleep apnea in Canada: Analysis from the Canadian Longitudinal Study on Aging. *Canadian Journal of Public Health, 115*(6), 970–979. https://doi.org/10.17269/s41997-024-00911-8
 
-    Gawhale, S., Upasani, D. E., Chaudhari, L., Khankal, D. V., Raja Kumar, J. R., & Upadhye, V. A. (2023). EEG signal processing for the identification of sleeping disorder using hybrid deep learning with ensemble machine learning classifier. International Journal of Intelligent Systems and Applications in Engineering, 11(10 Suppl.), 113-129.
+    Gawhale, S., Upasani, D. E., Chaudhari, L., Khankal, D. V., Raja Kumar, J. R., & Upadhye, V. A. (2023). EEG signal processing for the identification of sleeping disorder using hybrid deep learning with ensemble machine learning classifier. *International Journal of Intelligent Systems and Applications in Engineering, 11*(10 Suppl.), 113–129. https://doi.org/10.xxxx/xxxx
 
-    Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., … Stanley, H. E. (n.d.). University College Dublin Sleep Apnea Database (UCDDB) [Data set]. PhysioNet. Retrieved June 26, 2025, from https://archive.physionet.org/physiobank/database/ucddb/
+    Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., … Stanley, H. E. (n.d.). *University College Dublin Sleep Apnea Database (UCDDB)* [Data set]. PhysioNet. https://archive.physionet.org/physiobank/database/ucddb/
 
-    Khanmohmmadi, S., Khatibi, T., Tajeddin, G., Akhondzadeh, E., & Shojaee, A. (2025). Revolutionizing sleep disorder diagnosis: A multi-task learning approach optimized with genetic and Q-learning techniques. Scientific Reports, 15, Article 16603. https://doi.org/10.1038/s41598-025-01893-4
+    Khanmohmmadi, S., Khatibi, T., Tajeddin, G., Akhondzadeh, E., & Shojaee, A. (2025). Revolutionizing sleep disorder diagnosis: A multi-task learning approach optimized with genetic and Q-learning techniques. *Scientific Reports, 15*, Article 16603. https://doi.org/10.1038/s41598-025-01893-4
 
-    Li, C., Qi, Y., Ding, X., Zhao, J., Sang, T., & Lee, M. (2022). A deep learning method approach for sleep stage classification with EEG spectrogram. International Journal of Environmental Research and Public Health, 19(10), 6322. https://doi.org/10.3390/ijerph19106322
+    Li, C., Qi, Y., Ding, X., Zhao, J., Sang, T., & Lee, M. (2022). A deep learning method approach for sleep stage classification with EEG spectrogram. *International Journal of Environmental Research and Public Health, 19*(10), 6322. https://doi.org/10.3390/ijerph19106322
 
-    Monowar, M. M., Nobel, S. M. N., Afroj, M., Hamid, M. A., Uddin, M. Z., Kabir, M. M., & Mridha, M. F. (2025). Advanced sleep disorder detection using multi-layered ensemble learning and advanced data balancing techniques. Frontiers in Artificial Intelligence, 7, 1506770. https://doi.org/10.3389/frai.2024.1506770
+    Monowar, M. M., Nobel, S. M. N., Afroj, M., Hamid, M. A., Uddin, M. Z., Kabir, M. M., & Mridha, M. F. (2025). Advanced sleep disorder detection using multi-layered ensemble learning and advanced data balancing techniques. *Frontiers in Artificial Intelligence, 7*, 1506770. https://doi.org/10.3389/frai.2024.1506770
 
-    National Sleep Research Resource. (2025). Sleep Heart Health Study polysomnography EDF files [Data set]. Retrieved June 26, 2025, from https://sleepdata.org/datasets/shhs/files/polysomnography/edfs
+    National Sleep Research Resource. (2025). *Sleep Heart Health Study polysomnography EDF files* [Data set]. https://sleepdata.org/datasets/shhs/files/polysomnography/edfs
 
-    Statistics Canada. (2018). Sleep apnea in Canada, 2016 and 2017 [Health fact sheet]. Government of Canada. Retrieved from https://www150.statcan.gc.ca/n1/pub/82-625-x/2018001/article/54979-eng.htm
+    Statistics Canada. (2018). *Sleep apnea in Canada, 2016 and 2017* [Health fact sheet]. Government of Canada. https://www150.statcan.gc.ca/n1/pub/82-625-x/2018001/article/54979-eng.htm
 
-    Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. Biomedical Signal Processing and Control, 85, 104912. https://doi.org/10.1016/j.bspc.2023.104912
+    Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. *Biomedical Signal Processing and Control, 85*, 104912. https://doi.org/10.1016/j.bspc.2023.104912
 
-    Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. arXiv preprint arXiv:1610.01683.
+    Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv preprint*, *arXiv:1610.01683*. https://arxiv.org/abs/1610.01683
 
-    Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2023). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. BRAC University.
+    Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2023). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *BRAC University*.
 
-    Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. arXiv preprint arXiv:2204.06997.
+    Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. *arXiv preprint*, *arXiv:2204.06997*. https://arxiv.org/abs/2204.06997
     """)
 
 def show_terminology():

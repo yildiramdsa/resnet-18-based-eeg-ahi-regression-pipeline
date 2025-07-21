@@ -109,7 +109,7 @@ def show_literature_review():
     - **g(t−τ)**: Windowing function (Hann window in their implementation)
     - **τ**: Time-shifting parameter
     - **f**: Frequency parameter
-    - **e<sup>-j2πft</sup>**: Complex exponential function used in the Fourier transform
+    - **exp(-j2πft)**: Complex exponential function used in the Fourier transform
 
     This integral allows the signal to be analyzed over a given time interval (τ) and at a given frequency (f), enabling simultaneous analysis of both time and frequency information. When g(t−τ) is considered a windowing function, the STFT analyzes both the time and frequency information of a signal simultaneously, providing the foundation for spectrogram generation.
 

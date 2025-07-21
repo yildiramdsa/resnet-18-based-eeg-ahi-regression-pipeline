@@ -362,13 +362,13 @@ def show_results():
 def show_conclusion():
     st.header("Conclusion")
     st.markdown("""
-    This study demonstrates the feasibility of automated <span class="inline-badge">sleep apnea severity assessment</span> using <span class="inline-badge">EEG spectrograms</span> and <span class="inline-badge">deep learning</span>. Our <span class="inline-badge">ResNet-18-based pipeline</span> achieves moderate performance with an RMSE of 6.8 events/hour and Pearson correlation of 0.76, establishing a foundation for scalable sleep apnea screening from standard EEG recordings.
+    This study demonstrates the feasibility of automated <span class="inline-badge">sleep apnea severity assessment</span> using <span class="inline-badge">EEG spectrograms</span> and <span class="inline-badge">deep learning</span>. Our <span class="inline-badge">ResNet-18-based pipeline</span> achieves moderate performance with an **RMSE of 6.8 events/hour** and **Pearson correlation of 0.76**, establishing a foundation for scalable sleep apnea screening from standard EEG recordings.
     
     The <span class="inline-badge">spectrogram-based approach</span> effectively captures spectral signatures associated with sleep apnea events, while the <span class="inline-badge">subject-stratified validation</span> ensures realistic performance estimates on unseen individuals. Although systematic biases exist across the AHI spectrum, the model provides a clinically relevant severity ranking that can support treatment prioritization and screening decisions.
     
-    <span class="inline-badge">Key contributions</span> include the development of a comprehensive preprocessing pipeline with quality control, implementation of transfer learning for limited medical data, and demonstration of continuous AHI regression rather than categorical classification. The modular design enables easy adaptation to different datasets and clinical settings.
+    Key contributions include the development of a **comprehensive preprocessing pipeline with quality control**, **implementation of transfer learning for limited medical data**, and **demonstration of continuous AHI regression rather than categorical classification**. The modular design enables easy adaptation to different datasets and clinical settings.
     
-    <span class="inline-badge">Future work</span> should focus on expanding training datasets, incorporating multi-modal physiological signals, and optimizing for real-time clinical applications.
+    Future work should focus on **expanding training datasets**, **incorporating multi-modal physiological signals**, and **optimizing for real-time clinical applications**.
     
     **Code Availability:** The complete implementation, including data preprocessing, model training, and evaluation pipelines, is available at: [https://github.com/yildiramdsa/resnet-18-based-eeg-ahi-regression-pipeline](https://github.com/yildiramdsa/resnet-18-based-eeg-ahi-regression-pipeline)
     """, unsafe_allow_html=True)

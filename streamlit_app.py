@@ -102,7 +102,7 @@ def show_literature_review():
 
     For the STFT application, a moving window function g(t−τ) is applied to the signal x(t) at time τ. Each window is moved by τ in the time domain, and these changes in the time interval are displayed in the windows. The STFT is mathematically defined as:
 
-    **X(τ,f) = ∫<sub>-∞</sub><sup>∞</sup> x(t)g(t−τ)e<sup>-j2πft</sup>dt**
+    **X(τ,f) = ∫_{-∞}^{∞} x(t)g(t-τ)e^{-j2πft}dt**
 
     Where:
     - **x(t)**: Analyzed signal (EEG waveform)

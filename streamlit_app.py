@@ -4,7 +4,7 @@ PAGE_TITLE = "ResNet-18-Based EEG AHI Regression Pipeline"
 
 st.set_page_config(
     page_title=PAGE_TITLE,
-    layout="wide"
+    layout="centered"
 )
 
 def show_abstract():

@@ -104,7 +104,7 @@ def show_literature_review():
 
     **X(τ,f) = ∫ from -∞ to ∞ of x(t)g(t-τ) * exp(-j2πft) dt**
 
-    Where:
+    Where:  
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**x(t)**: Analyzed signal (EEG waveform)  
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**g(t−τ)**: Windowing function (Hann window in their implementation)  
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**τ**: Time-shifting parameter  

@@ -394,11 +394,11 @@ def show_references():
 
     Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. *PeerJ Computer Science, 11*, e2718. https://doi.org/10.7717/peerj-cs.2718
 
-    Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv preprint*, *arXiv:1610.01683*. https://arxiv.org/abs/1610.01683
+    Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv*. https://doi.org/10.48550/arXiv.1610.01683
 
-    Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2025). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *arXiv preprint*, *arXiv:2405.11008*. https://doi.org/10.48550/arXiv.2405.11008
+    Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2025). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *arXiv*. https://doi.org/10.48550/arXiv.2405.11008
 
-    Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. *arXiv preprint*, *arXiv:2204.06997*. https://arxiv.org/abs/2204.06997
+    Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. *arXiv*. https://doi.org/10.48550/arXiv.2204.06997
     """)
 
 def show_terminology():

@@ -94,6 +94,14 @@ def show_literature_review():
     st.markdown("""
     Tanci and Hekim (2025) developed a four-class sleep apnea classifier by transforming 30-second windows of EEG signals into STFT spectrograms and feeding them into a YOLOv8 network. Each spectrogram corresponds to one of four AHI-based categories: healthy (AHI < 5), mild (5-14.9), moderate (15-29.9), or severe (≥30) events/hour. While a naïve baseline assumes 25% accuracy per class, YOLOv8 achieved a total correct classification (TCC) of 93.7%, outperforming both ResNet64 (93.0%) and YOLOv5 (88.2%). The authors conclude that YOLOv8 offers both rapid inference and high accuracy for EEG-based sleep apnea staging.
 
+    The dataset used in this study is C3-A2 channel EEG signals from PSG recordings in the Physionet database (PhysioBank ATM), comprising data from 25 subjects with varying degrees of sleep apnea severity. The C3-A2 electrode placement offers a clinically standard, high-quality window into the brain's response to breathing disruptions, while keeping preprocessing and model complexity manageable. This single-channel approach captures the essential neural signatures associated with sleep apnea events without the computational overhead of multi-channel analysis, making it suitable for both research and potential clinical deployment.
+
+    Their approach follows a comprehensive deep learning classification pipeline, as illustrated in their article, which transforms raw EEG signals through multiple processing stages to produce categorical sleep apnea severity classifications.
+
+    st.image("assets/tanci_hekim_pipeline.jpg", use_container_width=True)
+
+    *Figure: Tanci & Hekim's (2025) deep learning classification pipeline for sleep apnea severity detection. The process begins with raw EEG signals, which are segmented into 30-second windows, converted to spectrograms for time-frequency analysis, processed through deep learning models, and finally classified into severity categories (normal, mild, moderate, severe).*
+
     We recreated Tanci and Hekim's (2025) exact spectrogram setup in simple steps: we cut the C3A2 EEG into 30-second chunks, ran a Hann-window STFT with a 256-point FFT and 50% overlap, converted the results to decibels, and skipped any chunk that had empty (all-floor) columns. We saved these spectrograms as 150 dpi viridis PNGs and then ran them through each of their published models—ResNet64, YOLOv5, and YOLOv8—to classify sleep apnea severity. Finally, we evaluated each model on a balanced hold-out test set of 400 samples (100 per class) to compare their performance.
 
     <span class="inline-badge">ResNet64 Performance Analysis</span>. **ResNet64** achieved a balanced accuracy of 85.50%, with macro-averaged precision of 0.8703, recall of 0.8550, and F1-score of 0.8555. Per-class performance was strongest for severe apnea (precision = 0.91, recall = 0.92, F1 = 0.92) and weakest for mild cases (precision = 0.75, recall = 0.94, F1 = 0.84).

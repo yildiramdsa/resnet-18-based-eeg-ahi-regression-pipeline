@@ -208,32 +208,15 @@ def show_literature_review():
 
     st.markdown("""
 
-    In contrast to Tanci and Hekim's classification approach, our research implements a comprehensive regression pipeline for continuous AHI estimation. The key components of our methodology include:
+    In contrast to Tanci and Hekim's classification approach, our research implements a comprehensive regression pipeline for continuous AHI estimation. Our methodology begins with <span class="inline-badge">raw EEG signals</span> from the C3/A2 channel of the SHHS-1 dataset, comprising 100 subjects with varying degrees of sleep apnea severity. The <span class="inline-badge">signal segmentation</span> process divides these recordings into 30-second windows with 50% overlap, following the AASM standard for sleep analysis. We implement comprehensive <span class="inline-badge">quality control</span> through variance filtering (standard deviation > 5.0 and < 200.0) and artifact rejection to ensure only high-quality epochs are retained for analysis.
 
-    **Data Processing Pipeline:**
-    - **Raw EEG Signals**: C3/A2 channel from SHHS-1 dataset (100 subjects)
-    - **Signal Segmentation**: 30-second windows with 50% overlap (AASM standard)
-    - **Quality Control**: Variance filtering (std > 5.0, < 200.0) and artifact rejection
-    - **Spectrogram Generation**: STFT with 256-point FFT, Hann window, global normalization
-    - **Image Processing**: 224×224 PNG spectrograms with viridis colormap
+    The <span class="inline-badge">spectrogram generation</span> employs Short-Time Fourier Transform (STFT) with 256-point FFT and Hann windowing, followed by global normalization to ensure consistent color mapping across all subjects. The resulting <span class="inline-badge">image processing</span> produces 224×224 pixel PNG spectrograms using the viridis colormap, optimized for frequency visualization and deep learning model input.
 
-    **Deep Learning Architecture:**
-    - **ResNet-18 Backbone**: ImageNet pretrained with transfer learning
-    - **Custom Regression Head**: Single AHI output (continuous prediction)
-    - **Training Strategy**: Subject-stratified 5-fold cross-validation
-    - **Optimization**: Learning rate warmup, early stopping, data augmentation
+    Our <span class="inline-badge">deep learning architecture</span> utilizes a ResNet-18 backbone with ImageNet pretrained weights, enabling effective transfer learning for the limited medical dataset. We replace the final classification layer with a custom regression head that outputs a single continuous AHI value, allowing for precise severity estimation rather than categorical classification. The <span class="inline-badge">training strategy</span> employs subject-stratified 5-fold cross-validation to prevent data leakage between individuals, ensuring realistic performance estimates on unseen subjects. We implement several <span class="inline-badge">optimization techniques</span> including learning rate warmup, early stopping, and data augmentation to improve model generalization and prevent overfitting.
 
-    **Prediction & Evaluation:**
-    - **Window-Level Analysis**: Individual 30-second window predictions
-    - **Subject Aggregation**: Average predictions per individual
-    - **Continuous Output**: AHI regression (not categorical classification)
-    - **Performance Metrics**: RMSE, MAE, Pearson correlation
+    The <span class="inline-badge">prediction and evaluation</span> process operates at two levels: individual 30-second window predictions are generated first, then aggregated at the subject level by averaging to yield per-individual AHI estimates. This approach provides continuous AHI regression output rather than categorical classification, offering more clinically relevant precision for severity assessment. Performance is evaluated using standard regression metrics including Root Mean Square Error (RMSE), Mean Absolute Error (MAE), and Pearson correlation coefficient.
 
-    **Key Advantages:**
-    - **Data Leakage Prevention**: Subject-stratified splits ensure realistic validation
-    - **Clinical Relevance**: Continuous AHI estimates provide precise severity assessment
-    - **Quality Assurance**: Comprehensive preprocessing ensures reliable spectrograms
-    - **Scalable Design**: Single-channel approach suitable for clinical deployment
+    Our approach offers several key advantages over classification-based methods. The <span class="inline-badge">data leakage prevention</span> through subject-stratified splits ensures realistic validation performance that generalizes to unseen individuals. The <span class="inline-badge">clinical relevance</span> of continuous AHI estimates provides precise severity assessment suitable for treatment planning and monitoring. Comprehensive <span class="inline-badge">quality assurance</span> measures ensure reliable spectrogram generation and model training. Finally, the <span class="inline-badge">scalable design</span> using single-channel EEG makes the pipeline suitable for clinical deployment in various healthcare settings.
     """, unsafe_allow_html=True)
 
 def show_methods():

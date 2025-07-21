@@ -366,7 +366,7 @@ def show_conclusion():
     
     The <span class="inline-badge">spectrogram-based approach</span> effectively captures spectral signatures associated with sleep apnea events, while the <span class="inline-badge">subject-stratified validation</span> ensures realistic performance estimates on unseen individuals. Although systematic biases exist across the AHI spectrum, the model provides a clinically relevant severity ranking that can support treatment prioritization and screening decisions.
     
-    Key contributions include the development of a **comprehensive preprocessing pipeline with quality control**, **implementation of transfer learning for limited medical data**, and **demonstration of continuous AHI regression rather than categorical classification**. The modular design enables easy adaptation to different datasets and clinical settings.
+    Key contributions of this work include the development of a <span class="inline-badge">robust preprocessing pipeline</span> with stringent quality control for EEG spectrogram generation, the application of <span class="inline-badge">transfer learning</span> using a ResNet-18 architecture optimized for medical imaging, and the implementation of <span class="inline-badge">continuous AHI regression</span> for precise, subject-level sleep apnea severity estimation. The modular and scalable design of the pipeline ensures adaptability to diverse datasets and facilitates integration into various clinical and research environments.
     
     Future work should focus on **expanding training datasets**, **incorporating multi-modal physiological signals**, and **optimizing for real-time clinical applications**.
     

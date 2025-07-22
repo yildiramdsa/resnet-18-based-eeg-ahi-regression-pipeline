@@ -372,7 +372,7 @@ def show_conclusion():
     """, unsafe_allow_html=True)
 
 def show_references():
-    col1, col2, col3 = st.columns([1, 10, 1])
+    col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
         st.header("References")
         st.markdown("""
@@ -495,6 +495,9 @@ def main():
         font-weight: 500;
         background-color: #ff4b4b;
         color: white;
+    }
+    h1 {
+        text-align: center;
     }
     div[role="tablist"] {
         display: flex;

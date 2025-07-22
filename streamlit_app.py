@@ -12,13 +12,13 @@ def show_abstract():
     with col2:
         st.header("Abstract")
         st.markdown("""
-        <span class="inline-badge">Sleep apnea</span> is a prevalent sleep disorder affecting millions worldwide, with significant cardiovascular and cognitive consequences. We present a <span class="inline-badge">deep learning pipeline</span> for automated <span class="inline-badge">Apnea-Hypopnea Index (AHI)</span> estimation from single-channel EEG recordings using spectrogram-based analysis.
-    
-        Our approach utilizes the <span class="inline-badge">Sleep Heart Health Study (SHHS-1)</span> dataset, processing C3/A2 EEG signals into 30-second spectrogram windows with comprehensive quality control. We implement a <span class="inline-badge">ResNet-18 architecture</span> with transfer learning from ImageNet pretraining, optimized for continuous AHI regression rather than categorical classification. The model incorporates subject-stratified cross-validation, learning rate warmup, early stopping, and data augmentation to ensure robust generalization.
-    
-        Results demonstrate moderate performance with a <span class="inline-badge">Root Mean Square Error (RMSE)</span> of 6.8 events/hour and <span class="inline-badge">Pearson correlation</span> of 0.76 on held-out validation data. While systematic biases exist (overprediction at low AHI, underprediction at high AHI), the model provides clinically relevant severity ranking suitable for screening applications. Our work establishes the feasibility of automated sleep apnea assessment from standard EEG recordings.
-    
-        **Keywords:** Sleep apnea, EEG spectrograms, deep learning, ResNet-18, AHI regression
+        Sleep apnea is a prevalent sleep disorder affecting millions worldwide, with significant cardiovascular and cognitive consequences. We present a <span class="inline-badge">deep learning pipeline for automated Apnea-Hypopnea Index (AHI) estimation from single-channel EEG recordings using spectrogram-based analysis</span>.
+        
+        Our **approach utilizes the Sleep Heart Health Study (SHHS-1) dataset, processing C3/A2 EEG signals into 30-second spectrogram windows with comprehensive quality control**. We implement a **ResNet-18 architecture with transfer learning from ImageNet pretraining, optimized for continuous AHI regression** rather than categorical classification. The model incorporates **subject-stratified cross-validation, learning rate warmup, early stopping, and data augmentation** to ensure robust generalization.
+        
+        Results demonstrate moderate performance with a **Root Mean Square Error (RMSE) of 6.8 events/hour** and a **Pearson correlation of 0.76** on held-out validation data. While systematic biases exist (**overprediction at low AHI, underprediction at high AHI**), the model provides a **clinically relevant severity ranking suitable for screening applications**. Our work establishes the feasibility of automated sleep apnea assessment from standard EEG recordings.
+
+        **Keywords**: Sleep apnea, EEG spectrograms, deep learning, ResNet-18, AHI regression
         """, unsafe_allow_html=True)
 
 def show_introduction():
@@ -202,9 +202,7 @@ def show_literature_review():
             st.image("assets/YOLOv8_pr_curves_balanced.png")
         st.markdown("""
         Tanci and Hekim's (2025) study presents an innovative application of EEG spectrograms and the YOLOv8 architecture for sleep apnea classification; however, several aspects of their design raise concerns. By labelling every 30-second spectrogram according to the subject's overall AHI category—even when many windows may not contain apnea events—the model is trained on noisy and potentially misleading targets. Their random division of spectrogram images into training and test sets allows data from the same recording to appear in both, which can artificially boost performance by allowing the network to memorize subject-specific signal patterns rather than learn generalizable features. Moreover, the decision to train each backbone for a fixed number of epochs without any learning-rate scheduling or early stopping risks both under- and over-training, since there is no mechanism to detect when the model has truly converged. The inclusion of spectrograms that contain little or no meaningful signal—due to the absence of any quality‐control filtering—further dilutes the training data and can hinder model convergence. Finally, framing AHI estimation as a four-class classification task overlooks the continuous nature of apnea severity, potentially obscuring critical clinical nuances near category thresholds. Together, these methodological choices suggest that the reported 93.7% total correct classification may overstate the model's actual ability to generalize to unseen patients and to produce clinically useful estimates of sleep apnea severity.
-        """, unsafe_allow_html=True)
 
-        st.markdown("""
         In contrast to Tanci and Hekim's classification approach, our research implements a comprehensive regression pipeline for continuous AHI estimation. Our methodology begins with <span class="inline-badge">raw EEG signals</span> from the C3/A2 channel of the SHHS-1 dataset, comprising 100 subjects with varying degrees of sleep apnea severity. The <span class="inline-badge">signal segmentation</span> process divides these recordings into 30-second windows with 50% overlap, following the AASM standard for sleep analysis. We implement comprehensive <span class="inline-badge">quality control</span> through variance filtering (standard deviation > 5.0 and < 200.0) and artifact rejection to ensure only high-quality epochs are retained for analysis.
 
         The <span class="inline-badge">spectrogram generation</span> employs Short-Time Fourier Transform (STFT) with 256-point FFT and Hann windowing, followed by global normalization to ensure consistent color mapping across all subjects. The resulting <span class="inline-badge">image processing</span> produces 224×224 pixel PNG spectrograms using the viridis colormap, optimized for frequency visualization and deep learning model input.

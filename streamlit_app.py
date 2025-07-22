@@ -234,13 +234,10 @@ def show_methods():
         st.image("assets/ahi_distribution_histogram.png", use_container_width=True)
     col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
-        st.subheader("Spectrogram Generation & Quality Control")
         st.markdown("""
-        We transform raw EEG signals into <span class="inline-badge">spectrogram images</span> using a comprehensive pipeline designed for clinical applications. The process begins with <span class="inline-badge">signal segmentation</span> into 30-second windows (AASM standard) with 50% overlap to capture breathing event transitions, followed by <span class="inline-badge">STFT computation</span> using 256-point FFT with 128-point overlap for smooth spectrograms.
-    
-        <span class="inline-badge">Global contrast normalization</span> is computed across all subjects to ensure consistent color mapping (vmin=-53.68 dB, vmax=32.78 dB). <span class="inline-badge">Quality control</span> is implemented through variance filtering to remove flat epochs (std ≤ 5.0) indicating sensor issues and artifact rejection for noisy epochs (std ≥ 200.0) with excessive variance.
-    
-        The <span class="inline-badge">image generation</span> produces 224×224 pixel spectrograms using the viridis colormap for optimal frequency visualization, exported in PNG format with tight bounding boxes and no padding. See examples below.
+        <span class="inline-badge">Spectrogram Generation & Quality Control</span> We converted raw EEG recordings into standardized 224×224-pixel spectrogram images using a multi-step pipeline tailored for clinical use. First, we segmented the C3/A2 EEG signal into 30‑second windows with 50% overlap (per AASM guidelines) to capture transitions in breathing events. Each window underwent a short-time Fourier transform (STFT) using a 256-point FFT with a 128-point hop length, resulting in smooth time–frequency representations. We then applied global contrast normalization—using fixed decibel limits (vmin = –53.68 dB, vmax = 32.78 dB) — computed across the entire cohort—to ensure consistent colour scaling.
+        
+        For quality control, we automatically discarded any epoch with abnormally low variance (standard deviation ≤ 5.0), indicating a flat or disconnected channel, as well as epochs with extremely high variance (standard deviation ≥ 200.0), which reflected movement or sensor artifacts. Surviving windows were rendered as PNG images using the Viridis colormap, saved without padding or borders (see examples below), and named {subject_id}_{window_index:04d}.png in per‑subject directories (resnet224_color/{subject_id}/). Alongside each image, we recorded metadata—including file path and true AHI—in a master window_metadata.csv file.           
         """, unsafe_allow_html=True)
         col1, col2, col3, col4 = st.columns(4)
         with col1:
@@ -252,13 +249,7 @@ def show_methods():
         with col4:
             st.image("assets/example_spectrogram_severe.png", use_container_width=True)
         st.markdown("""
-        The output is organized in per-subject directories (`resnet224_color/{subject_id}/`) with systematic naming convention `{subject_id}_{window_index:04d}.png` and comprehensive metadata tracking including paths, AHI values, and quality metrics. Each subject typically generates 1,500-2,200 spectrogram windows, with quality control filtering ensuring only high-quality epochs are retained.
-    
-        <span class="inline-badge">Cross-validation strategy</span> employs 5-fold stratified group cross-validation to prevent data leakage between subjects. Each fold contains approximately 31,000-36,000 spectrogram windows, with subjects randomly assigned to folds while maintaining balanced representation of apnea severity categories. This approach ensures that predictions on unseen subjects provide realistic estimates of model generalization performance.
-    
-        <span class="inline-badge">Data organization</span> includes comprehensive metadata tracking with window-level information stored in `window_metadata.csv` and fold assignments in `spectrogram_splits.csv`. The dataset contains over 166,000 high-quality spectrogram windows across 100 subjects, providing sufficient data for robust model training while maintaining clinical relevance through stratified sampling.
-    
-        This pipeline preserves both temporal and frequency information while creating standardized inputs suitable for deep learning model training and evaluation.
+        To prevent data leakage, we adopted a five-fold stratified group cross-validation scheme: subjects (not individual windows) were assigned to folds so that each fold contained approximately 31,000–36,000 high-quality spectrograms and maintained a balanced distribution of apnea severities. Overall, this process yielded over 166,000 spectrogram windows across 100 subjects.
         """, unsafe_allow_html=True)
         st.subheader("ResNet-18 Model Architecture & Training")
         st.markdown("""

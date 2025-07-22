@@ -240,7 +240,7 @@ def show_methods():
     
         <span class="inline-badge">AHI Distribution Analysis</span>. The dataset exhibits a characteristic right-skewed distribution of AHI values, with the majority of subjects having low to moderate apnea severity. This distribution reflects the natural prevalence of sleep apnea in the general population, where most individuals have minimal or mild symptoms, while severe cases are less common but clinically significant.
         """, unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 4, 1])
+    col1, col2, col3 = st.columns([1, 3, 1])
     with col2:
         st.image("assets/ahi_distribution_histogram.png", use_container_width=True)
     col1, col2, col3 = st.columns([1, 8, 1])

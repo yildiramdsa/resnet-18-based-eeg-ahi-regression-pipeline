@@ -250,8 +250,7 @@ def show_methods():
             st.image("assets/example_spectrogram_severe.png", use_container_width=True)
         st.markdown("""
         To prevent data leakage, we **adopted a five-fold stratified group cross-validation scheme**: subjects, rather than individual windows, were assigned to folds so that each fold contained approximately 31,000-36,000 high-quality spectrograms and maintained a balanced distribution of apnea severities. Overall, this process yielded **over 166,000 spectrogram windows across 100 subjects**.
-        """, unsafe_allow_html=True)
-        st.markdown("""
+
         <span class="inline-badge">ResNet-18 Model Architecture & Training</span> Our <span class="inline-badge">ResNet-18 architecture</span> leverages transfer learning from ImageNet pretraining to perform <span class="inline-badge">AHI regression</span> from EEG spectrogram images. The model combines the proven feature extraction capabilities of ResNet-18 with a custom regression head optimized for continuous severity prediction.
     
         <span class="inline-badge">Model Architecture</span>. We utilize the standard ResNet-18 backbone with ImageNet pretrained weights, replacing the final classification layer with a single-output linear regression head. The architecture processes 224×224 RGB spectrogram images through 18 residual layers organized in 4 blocks, with each block containing 2 residual units. The final global average pooling layer reduces spatial dimensions to 512 features, which are then mapped to a single AHI value through the custom fully-connected layer.

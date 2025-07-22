@@ -319,7 +319,7 @@ def show_results():
     
         <span class="inline-badge">Validation Performance</span>. The model achieved a <span class="inline-badge">Root Mean Square Error (RMSE)</span> of 6.8 events/hour and a <span class="inline-badge">Mean Absolute Error (MAE)</span> of 5.2 events/hour on the validation set. These metrics indicate that, on average, the model's predictions deviate from true AHI values by approximately 6.8 events/hour in terms of squared error and 5.2 events/hour in absolute terms. The <span class="inline-badge">Pearson correlation coefficient</span> of 0.76 demonstrates moderate linear agreement between predicted and true AHI values, indicating room for improvement in capturing the underlying severity relationships.
         """, unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 1.5, 1])
+    col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
         st.image("assets/ahi_regression_scatter_plot.png", use_container_width=True)
     col1, col2, col3 = st.columns([1, 8, 1])
@@ -343,8 +343,6 @@ def show_results():
     
         The moderate correlation coefficient (r=0.76) falls within the range reported in similar studies, indicating that our spectrogram-based approach captures some of the spectral signatures associated with sleep apnea events. The combination of transfer learning from ImageNet pretraining, subject-stratified validation, and window-to-subject aggregation provides a solid foundation, though further optimization is needed to improve prediction accuracy.
         """, unsafe_allow_html=True)
-    col1, col2, col3 = st.columns([1, 8, 1])
-    with col2:
         st.subheader("Limitations and Future Work")
         st.markdown("""
         Several limitations should be considered when interpreting these results. The model was trained on a relatively small dataset of 100 subjects, which may limit its ability to capture the full spectrum of individual variations in sleep patterns and apnea presentations. The significant overprediction at low AHI values (0-5) and consistent underprediction at higher values (15-35) suggest that the model could benefit from additional training data across the severity spectrum, particularly for extreme cases.

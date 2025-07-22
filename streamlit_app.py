@@ -314,9 +314,11 @@ def show_results():
     with col2:
         st.header("Results & Discussion")
         st.markdown("""
-        <span class="inline-badge">Model Performance Metrics</span> Our ResNet-18-based AHI regression model achieved strong performance on the held-out validation set, demonstrating the feasibility of estimating sleep apnea severity from EEG spectrograms using automated methods. The model was evaluated using subject-level aggregation, where window-level predictions were averaged per individual to yield clinically relevant per-subject AHI estimates.
+        Our ResNet-18-based AHI regression model achieved moderate performance on the held-out validation set, demonstrating the feasibility of estimating sleep apnea severity from EEG spectrograms using automated methods. The model was evaluated using subject-level aggregation, where window-level predictions were averaged per individual to yield clinically relevant per-subject AHI estimates.
     
-        <span class="inline-badge">Validation Performance</span> The model achieved a <span class="inline-badge">Root Mean Square Error (RMSE)</span> of 6.8 events/hour and a <span class="inline-badge">Mean Absolute Error (MAE)</span> of 5.2 events/hour on the validation set. These metrics indicate that, on average, the model's predictions deviate from true AHI values by approximately 6.8 events/hour in terms of squared error and 5.2 events/hour in absolute terms. The <span class="inline-badge">Pearson correlation coefficient</span> of 0.76 demonstrates moderate linear agreement between predicted and true AHI values, indicating room for improvement in capturing the underlying severity relationships.
+        <span class="inline-badge">Validation Performance</span> The model achieved a **Root Mean Square Error (RMSE) of 6.8 events/hour** and a **Mean Absolute Error (MAE) of 5.2 events/hour** on the validation set. These metrics indicate that, on average, the model's predictions deviate from true AHI values by approximately 6.8 events/hour in terms of squared error and 5.2 events/hour in absolute terms. The **Pearson correlation coefficient of 0.76** demonstrates moderate linear agreement between predicted and true AHI values, indicating room for improvement in capturing the underlying severity relationships.
+        
+        <span class="inline-badge">Prediction Accuracy Analysis</span> The scatter plot below reveals several important characteristics of the model's performance across the AHI severity spectrum. The model demonstrates moderate correlation with true AHI values, with predictions showing **considerable spread around the perfect prediction line**.
         """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1, 1])
     with col2:
@@ -324,8 +326,6 @@ def show_results():
     col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
         st.markdown("""
-        <span class="inline-badge">Prediction Accuracy Analysis</span> The scatter plot reveals several important characteristics of the model's performance across the AHI severity spectrum. The model demonstrates moderate correlation with true AHI values, with predictions showing considerable spread around the perfect prediction line.
-    
         <span class="inline-badge">Performance Across Severity Levels</span> The model shows distinct performance patterns across different AHI ranges:
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Low AHI (0-5)**: Significant overprediction tendency, with predicted values typically 4-8 events/hour higher than true values. This systematic bias suggests the model struggles to distinguish between very low AHI cases and mild sleep apnea.
@@ -333,10 +333,8 @@ def show_results():
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mild AHI (5-15)**: Moderate agreement with true values, though predictions still show considerable variability. The model appears to compress predictions toward the middle range, with some overprediction for true values around 10-15.
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Moderate to Severe AHI (15-35)**: Consistent underprediction tendency, with the model underestimating true AHI values by 5-8 events/hour. This pattern suggests that the model may be conservative in predicting higher severity levels, possibly due to the limited number of training examples in this range.
-
-        <span class="inline-badge">Clinical Relevance</span> The achieved RMSE of 6.8 events/hour represents moderate performance for automated sleep apnea screening, with room for improvement. In clinical practice, AHI measurements can vary by 2-5 events/hour between different sleep studies due to night-to-night variability, positioning our model's error somewhat above the range of natural physiological variation. The moderate correlation (r = 0.76) indicates that the model provides a reasonable ranking of subjects by severity, albeit with reduced precision compared to ideal performance.
     
-        <span class="inline-badge">Model Robustness</span> The subject-stratified cross-validation approach ensures that performance estimates reflect true generalization to unseen individuals rather than memorization of subject-specific patterns. The consistent performance across the validation fold demonstrates the model's ability to learn generalizable features from EEG spectrograms that correlate with sleep apnea severity.
+        <span class="inline-badge">Model Robustness</span> The subject-stratified cross-validation approach ensures that **performance estimates reflect true generalization to unseen individuals** rather than memorization of subject-specific patterns. The consistent performance across the validation fold demonstrates the model's ability to learn generalizable features from EEG spectrograms that correlate with sleep apnea severity.
 
         Our results demonstrate the feasibility of EEG-based AHI regression while highlighting areas for improvement. While direct comparisons are challenging due to differences in datasets, evaluation protocols, and target metrics, our RMSE of 6.8 events/hour represents moderate performance for EEG-based AHI regression. Most previous work has focused on classification into severity categories rather than continuous regression, making our approach more clinically informative by providing precise severity estimates, though with current limitations in accuracy.
     

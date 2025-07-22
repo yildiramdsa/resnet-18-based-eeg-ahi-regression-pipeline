@@ -332,7 +332,7 @@ def show_results():
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mild AHI (5-15)**: Predictions cluster around the mid-range (8-18 events/hr), even when the true AHI spans 5-15. Agreement is better than at the extremes, but there's still high variability—some true values near 10-15 events/hr are underpredicted by ~2-4 events/hr, while others are slightly overpredicted.
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Moderate to Severe AHI (15-35)**: Almost all points for true AHI in this band fall below the identity line, with predicted values 5-8 events/hr lower than the true score. This consistent underprediction suggests that the model is conservative for higher-severity cases, likely a consequence of the sparse training examples above AHI 15.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Moderate to Severe AHI (15-35)**: All points for true AHI in this band fall below the identity line, with predicted values 5-8 events/hr lower than the true score. This consistent underprediction suggests that the model is conservative for higher-severity cases, likely a consequence of the sparse training examples above AHI 15.
     
         <span class="inline-badge">Model Robustness</span> The subject-stratified cross-validation approach ensures that **performance estimates reflect true generalization to unseen individuals** rather than memorization of subject-specific patterns. The consistent performance across the validation fold demonstrates the model's ability to learn generalizable features from EEG spectrograms that correlate with sleep apnea severity.
 

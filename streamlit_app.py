@@ -330,7 +330,7 @@ def show_results():
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Low AHI (0-5)**: Significant overprediction tendency, with predicted values typically 4-8 events/hour higher than true values. This systematic bias suggests the model struggles to distinguish between very low AHI cases and mild sleep apnea.
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mild AHI (5-15)**: Moderate agreement with true values, though predictions still show considerable variability. The model appears to compress predictions toward the middle range, with some overprediction for true values around 10-15.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mild AHI (5-15)**: Moderate agreement with true values, though predictions still show considerable variability. The model appears to compress predictions toward the middle range, with some underprediction for true values around 10-15.
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Moderate to Severe AHI (15-35)**: Consistent underprediction tendency, with the model underestimating true AHI values by 5-8 events/hour. This pattern suggests that the model may be conservative in predicting higher severity levels, possibly due to the limited number of training examples in this range.
     

@@ -314,10 +314,10 @@ def show_results():
     with col2:
         st.header("Results & Discussion")
         st.markdown("""
-        Our ResNet-18-based AHI regression model achieved moderate performance on the held-out validation set, demonstrating the feasibility of estimating sleep apnea severity from EEG spectrograms using automated methods. The model was evaluated using subject-level aggregation, where window-level predictions were averaged per individual to yield clinically relevant per-subject AHI estimates.
+        Our ResNet-18-based AHI regression model achieved moderate performance on the held-out validation set, demonstrating the feasibility of estimating sleep apnea severity from EEG spectrograms using automated methods. The model was evaluated using **subject-level aggregation, where window-level predictions were averaged per individual** to yield clinically relevant per-subject AHI estimates.
     
         <span class="inline-badge">Validation Performance</span> The model achieved a **Root Mean Square Error (RMSE) of 6.8 events/hour** and a **Mean Absolute Error (MAE) of 5.2 events/hour** on the validation set. These metrics indicate that, on average, the model's predictions deviate from true AHI values by approximately 6.8 events/hour in terms of squared error and 5.2 events/hour in absolute terms. The **Pearson correlation coefficient of 0.76** demonstrates moderate linear agreement between predicted and true AHI values, indicating room for improvement in capturing the underlying severity relationships.
-        
+    
         <span class="inline-badge">Prediction Accuracy Analysis</span> The scatter plot below reveals several important characteristics of the model's performance across the AHI severity spectrum. The model demonstrates moderate correlation with true AHI values, with predictions showing **considerable spread around the perfect prediction line**.
         """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1, 1])

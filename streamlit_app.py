@@ -235,9 +235,9 @@ def show_methods():
     col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
         st.markdown("""
-        <span class="inline-badge">Spectrogram Generation & Quality Control</span> We converted raw EEG recordings into standardized 224×224-pixel spectrogram images using a multi-step pipeline tailored for clinical use. First, we segmented the C3/A2 EEG signal into 30‑second windows with 50% overlap (per AASM guidelines) to capture transitions in breathing events. Each window underwent a short-time Fourier transform (STFT) using a 256-point FFT with a 128-point hop length, resulting in smooth time–frequency representations. We then applied global contrast normalization—using fixed decibel limits (vmin = –53.68 dB, vmax = 32.78 dB) — computed across the entire cohort—to ensure consistent colour scaling.
+        <span class="inline-badge">Spectrogram Generation & Quality Control</span> We converted raw EEG recordings into standardized 224×224‑pixel spectrogram images using a multi‑step pipeline tailored for clinical applications. First, we segmented the C3/A2 EEG signal into 30‑second windows with 50% overlap (per AASM guidelines) to capture transitions in breathing events. Each window underwent a short-time Fourier transform (STFT) with a 256-point FFT and a 128-point hop length, producing smooth time–frequency representations. We then applied global contrast normalization—using fixed decibel limits (vmin = –53.68 dB, vmax = 32.78 dB) — computed across the entire cohort—to ensure consistent colour scaling.
         
-        For quality control, we automatically discarded any epoch with abnormally low variance (standard deviation ≤ 5.0), indicating a flat or disconnected channel, as well as epochs with extremely high variance (standard deviation ≥ 200.0), which reflected movement or sensor artifacts. Surviving windows were rendered as PNG images using the Viridis colormap, saved without padding or borders (see examples below), and named {subject_id}_{window_index:04d}.png in per‑subject directories (resnet224_color/{subject_id}/). Alongside each image, we recorded metadata—including file path and true AHI—in a master window_metadata.csv file.           
+        For quality control, we discarded any epoch with abnormally low variance (standard deviation ≤ 5.0), indicating a flat or disconnected channel, as well as epochs with extremely high variance (standard deviation ≥ 200.0), which reflects movement or sensor artifacts. Surviving windows were rendered as PNG images using the Viridis colormap, saved without padding or borders (see example spectrograms below), and named {subject_id}_{window_index:04d}.png within per‑subject directories (resnet224_color/{subject_id}/). We also recorded metadata, including file path and true AHI, in a master window_metadata.csv.
         """, unsafe_allow_html=True)
         col1, col2, col3, col4 = st.columns(4)
         with col1:
@@ -249,7 +249,7 @@ def show_methods():
         with col4:
             st.image("assets/example_spectrogram_severe.png", use_container_width=True)
         st.markdown("""
-        To prevent data leakage, we adopted a five-fold stratified group cross-validation scheme: subjects (not individual windows) were assigned to folds so that each fold contained approximately 31,000–36,000 high-quality spectrograms and maintained a balanced distribution of apnea severities. Overall, this process yielded over 166,000 spectrogram windows across 100 subjects.
+        To prevent data leakage, we adopted a five-fold stratified group cross-validation scheme: subjects, rather than individual windows, were assigned to folds so that each fold contained approximately 31,000–36,000 high-quality spectrograms and maintained a balanced distribution of apnea severities. Overall, this process yielded over 166,000 spectrogram windows across 100 subjects.
         """, unsafe_allow_html=True)
         st.subheader("ResNet-18 Model Architecture & Training")
         st.markdown("""

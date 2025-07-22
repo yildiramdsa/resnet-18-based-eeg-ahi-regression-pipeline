@@ -240,7 +240,11 @@ def show_methods():
     
         <span class="inline-badge">AHI Distribution Analysis</span>. The dataset exhibits a characteristic right-skewed distribution of AHI values, with the majority of subjects having low to moderate apnea severity. This distribution reflects the natural prevalence of sleep apnea in the general population, where most individuals have minimal or mild symptoms, while severe cases are less common but clinically significant.
         """, unsafe_allow_html=True)
+    col1, col2, col3 = st.columns([1, 1, 1])
+    with col2:
         st.image("assets/ahi_distribution_histogram.png", use_container_width=True)
+    col1, col2, col3 = st.columns([1, 8, 1])
+    with col2:
         st.markdown("""
         <span class="inline-badge">Data Distribution Characteristics</span>. The histogram reveals a heavily right-skewed distribution with peaks at low AHI values (0-1 and 5-6), indicating that most subjects have minimal or mild sleep apnea. The validation set maintains similar statistical properties to the training set, ensuring representative model evaluation. This distribution highlights the challenge of predicting rare severe cases while maintaining accuracy across the full severity spectrum.
         """, unsafe_allow_html=True)
@@ -279,8 +283,7 @@ def show_methods():
         <span class="inline-badge">Transfer Learning Strategy</span>. We employ differential learning rates to optimize the pretrained backbone and new regression head separately. The backbone layers use a reduced learning rate (1e-5) to preserve learned features while allowing fine-tuning, while the regression head uses the full learning rate (1e-4) to learn task-specific mappings. This approach balances feature reuse with task adaptation, enabling efficient training on the limited spectrogram dataset.
     
         <span class="inline-badge">Loss Function & Optimization</span>. We use <span class="inline-badge">Smooth L1 Loss (Huber Loss)</span> for regression, which combines the benefits of L1 and L2 losses by being less sensitive to outliers than mean squared error while maintaining smooth gradients. The optimizer is Adam with weight decay regularization, and we implement gradient clipping (norm ≤ 1.0) to prevent exploding gradients during training.
-        """, unsafe_allow_html=True)
-        st.markdown("""
+
         <span class="inline-badge">Training Pipeline</span>. The training process incorporates several best practices for robust model development:
     
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="inline-badge">Learning Rate Warmup</span>: Gradual learning rate increase over 5 epochs (0% to 100%) to stabilize early training  

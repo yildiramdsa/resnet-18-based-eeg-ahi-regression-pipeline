@@ -224,30 +224,16 @@ def show_methods():
     col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
         st.header("Materials & Methods")
-        st.subheader("Dataset")
         st.markdown("""
-        We utilize the <span class="inline-badge">Sleep Heart Health Study 1 (SHHS-1)</span> dataset, the baseline examination cycle of the landmark multi-center cohort study implemented by the National Heart Lung & Blood Institute. SHHS-1 was conducted between November 1995 and January 1998, with polysomnography recordings obtained from 6,441 participants recruited from existing epidemiological studies.
-    
-        <span class="inline-badge">Participant recruitment</span> was conducted from nine existing epidemiological studies including the Framingham Offspring Cohort, Atherosclerosis Risk in Communities (ARIC) study sites in Hagerstown and Minneapolis/St. Paul, Cardiovascular Health Study (CHS) sites in Hagerstown, Sacramento and Pittsburgh, and Strong Heart Study sites in South Dakota, Oklahoma, and Arizona. Inclusion criteria required participants to be 40 years or older with no history of sleep apnea treatment, tracheostomy, or current home oxygen therapy. Several cohorts over-sampled snorers to increase the study-wide prevalence of sleep-disordered breathing.
-    
-        <span class="inline-badge">SHHS-1 polysomnography recordings</span> were obtained in unattended settings, typically in participants' homes, by trained and certified technicians. The recording montage included C3/A2 and C4/A1 EEG channels sampled at 125 Hz, bilateral electrooculograms (EOG) at 50 Hz, submental electromyogram (EMG) at 125 Hz, thoracic and abdominal excursions via inductive plethysmography at 10 Hz, nasal-oral thermocouple airflow detection at 10 Hz, finger-tip pulse oximetry at 1 Hz, and ECG at 125 Hz. Additional sensors monitored body position and ambient light levels.
-    
-        <span class="inline-badge">Data subset selection</span> involved stratified sampling of 100 subjects from the available 6,441 participants to ensure balanced representation across apnea severity categories. The final dataset includes 49 healthy subjects (AHI < 5), 30 mild cases (AHI 5-14.9), 14 moderate cases (AHI 15-29.9), and 7 severe cases (AHI ≥ 30), providing a clinically relevant distribution for model development and validation.
-    
-        <span class="inline-badge">EEG signal processing</span> focuses on the C3/A2 EEG channel, which is automatically detected from available channels using preference matching for "EEG(sec)", "EEG2", "EEG 2", or "EEG sec" labels. This channel provides the primary input for spectrogram generation, with signals processed at their native 125 Hz sampling rate to preserve temporal and frequency resolution.
-    
-        The SHHS-1 dataset represents the largest and most comprehensive baseline sleep study, providing essential data for investigating the cardiovascular consequences of sleep-disordered breathing. The comprehensive physiological monitoring, large sample size, and standardized protocols make SHHS-1 ideal for developing and validating automated sleep apnea severity estimation methods that can generalize to diverse populations and clinical settings.
-    
-        <span class="inline-badge">AHI Distribution Analysis</span>. The dataset exhibits a characteristic right-skewed distribution of AHI values, with the majority of subjects having low to moderate apnea severity. This distribution reflects the natural prevalence of sleep apnea in the general population, where most individuals have minimal or mild symptoms, while severe cases are less common but clinically significant.
+        <span class="inline-badge">Dataset</span> We utilized the Sleep Heart Health Study 1 (SHHS-1) dataset, which collected overnight sleep recordings from 6,441 adults (40 years or older) between 1995 and 1998. Participants came from nine extensive health studies (e.g., Framingham Offspring, ARIC, CHS, Strong Heart), and some sites intentionally included more snorers to capture a range of sleep-breathing issues. All recordings were done at home by trained technicians using a complete sleep montage: two EEG channels (C3/A2, C4/A1 at 125 Hz), eye movements (EOG at 50 Hz), muscle tone (EMG at 125 Hz), breathing effort (plethysmography at 10 Hz), airflow (thermocouple at 10 Hz), blood oxygen (pulse oximetry at 1 Hz), heart rhythm (ECG at 125 Hz), plus body-position and light sensors. For our model, we automatically select the C3/A2 EEG channel to create spectrograms at 125 Hz, preserving both time and frequency details intact.
+
+        From the complete set of 6,441 recordings, we selected 100 subjects evenly distributed across severity levels—49 healthy (AHI < 5), 30 mild (AHI 5–14.9), 14 moderate (AHI 15–29.9), and 7 severe (AHI ≥ 30). This sample reflects the typical right-skewed distribution of AHI in the general population, with most people having low scores and fewer at the severe end. By training and testing our ResNet-18 regression model on this well-characterized, real-world data, we help ensure the model can generalize to both common and extreme cases of sleep apnea.
         """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 3, 1])
     with col2:
         st.image("assets/ahi_distribution_histogram.png", use_container_width=True)
     col1, col2, col3 = st.columns([1, 8, 1])
     with col2:
-        st.markdown("""
-        <span class="inline-badge">Data Distribution Characteristics</span>. The histogram reveals a heavily right-skewed distribution with peaks at low AHI values (0-1 and 5-6), indicating that most subjects have minimal or mild sleep apnea. The validation set maintains similar statistical properties to the training set, ensuring representative model evaluation. This distribution highlights the challenge of predicting rare severe cases while maintaining accuracy across the full severity spectrum.
-        """, unsafe_allow_html=True)
         st.subheader("Spectrogram Generation & Quality Control")
         st.markdown("""
         We transform raw EEG signals into <span class="inline-badge">spectrogram images</span> using a comprehensive pipeline designed for clinical applications. The process begins with <span class="inline-badge">signal segmentation</span> into 30-second windows (AASM standard) with 50% overlap to capture breathing event transitions, followed by <span class="inline-badge">STFT computation</span> using 256-point FFT with 128-point overlap for smooth spectrograms.

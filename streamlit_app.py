@@ -328,11 +328,11 @@ def show_results():
         st.markdown("""
         The model shows **distinct performance patterns across different AHI ranges**:
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Low AHI (0-5)**: Significant overprediction tendency, with predicted values typically 4-8 events/hour higher than true values. This systematic bias suggests the model struggles to distinguish between very low AHI cases and mild sleep apnea.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Low AHI (0-5)**: Most points lie well above the 45° line, with predictions in the 5-12 events/hr range for true AHI values of 0-5. The model systematically overestimates very low-severity cases by approximately 4-8 events/hr, indicating difficulty in distinguishing healthy from very mild apnea.
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mild AHI (5-15)**: Moderate agreement with true values, though predictions still show considerable variability. The model appears to compress predictions toward the middle range, with some underprediction for true values around 10-15.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Mild AHI (5-15)**: Predictions cluster around the mid-range (8-18 events/hr), even when the true AHI spans 5-15. Agreement is better than at the extremes, but there's still high variability—some true values near 10-15 events/hr are underpredicted by ~2-4 events/hr, while others are slightly overpredicted.
     
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Moderate to Severe AHI (15-35)**: Consistent underprediction tendency, with the model underestimating true AHI values by 5-8 events/hour. This pattern suggests that the model may be conservative in predicting higher severity levels, possibly due to the limited number of training examples in this range.
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Moderate to Severe AHI (15-35)**: Almost all points for true AHI in this band fall below the identity line, with predicted values 5-8 events/hr lower than the true score. This consistent underprediction suggests that the model is conservative for higher-severity cases, likely a consequence of the sparse training examples above AHI 15.
     
         <span class="inline-badge">Model Robustness</span> The subject-stratified cross-validation approach ensures that **performance estimates reflect true generalization to unseen individuals** rather than memorization of subject-specific patterns. The consistent performance across the validation fold demonstrates the model's ability to learn generalizable features from EEG spectrograms that correlate with sleep apnea severity.
 
@@ -340,7 +340,7 @@ def show_results():
     
         The moderate correlation coefficient (r = 0.76) falls within the range reported in similar studies, indicating that our spectrogram-based approach captures some of the spectral signatures associated with sleep apnea events. The combination of transfer learning from ImageNet pretraining, subject-stratified validation, and window-to-subject aggregation provides a solid foundation, though further optimization is needed to improve prediction accuracy.
 
-        <span class="inline-badge">Limitations and Future Work</span> Several limitations should be considered when interpreting these results. The model was trained on a relatively small dataset of 100 subjects, which may limit its ability to capture the full spectrum of individual variations in sleep patterns and apnea presentations. Moreover, the significant overprediction at low AHI values (0–5) and consistent underprediction at higher values (15–35) suggest that the model could benefit from additional training data across the severity spectrum, particularly for extreme cases. To address these issues, future work should focus on expanding the training dataset to include a larger and more diverse population, integrating multi‑modal physiological signals such as ECG and respiratory effort to improve predictive accuracy, and exploring ensemble methods that combine outputs from multiple models or architectures. Despite these limitations, the current model demonstrates the potential for automated, scalable assessment of sleep apnea severity using standard EEG recordings, offering a promising tool for both clinical screening and research applications.
+        <span class="inline-badge">Limitations and Future Work</span> Several limitations should be considered when interpreting these results. The model was trained on a relatively small dataset of 100 subjects, which may limit its ability to capture the full spectrum of individual variations in sleep patterns and apnea presentations. Moreover, the significant overprediction at low AHI values (0-5) and consistent underprediction at higher values (15-35) suggest that the model could benefit from additional training data across the severity spectrum, particularly for extreme cases. To address these issues, future work should focus on expanding the training dataset to include a larger and more diverse population, integrating multi‑modal physiological signals such as ECG and respiratory effort to improve predictive accuracy, and exploring ensemble methods that combine outputs from multiple models or architectures. Despite these limitations, the current model demonstrates the potential for automated, scalable assessment of sleep apnea severity using standard EEG recordings, offering a promising tool for both clinical screening and research applications.
         """, unsafe_allow_html=True)
 
 def show_conclusion():
@@ -362,17 +362,17 @@ def show_references():
     with col2:
         st.header("References")
         st.markdown("""
-        Canadian Longitudinal Study on Aging Team. (2024). Prevalence and regional distribution of obstructive sleep apnea in Canada: Analysis from the Canadian Longitudinal Study on Aging. *Canadian Journal of Public Health, 115*(6), 970–979. https://doi.org/10.17269/s41997-024-00911-8
+        Canadian Longitudinal Study on Aging Team. (2024). Prevalence and regional distribution of obstructive sleep apnea in Canada: Analysis from the Canadian Longitudinal Study on Aging. *Canadian Journal of Public Health, 115*(6), 970-979. https://doi.org/10.17269/s41997-024-00911-8
 
-        Gawhale, S., Upasani, D. E., Chaudhari, L., Khankal, D. V., Kumar, J. R., & Upadhye, V. A. (2023). EEG signal processing for the identification of sleeping disorder using hybrid deep learning with ensemble machine learning classifier. *International Journal of Intelligent Systems and Applications in Engineering, 11*(10 Suppl.), 113–129. https://ijisae.org/index.php/IJISAE/article/view/3239
+        Gawhale, S., Upasani, D. E., Chaudhari, L., Khankal, D. V., Kumar, J. R., & Upadhye, V. A. (2023). EEG signal processing for the identification of sleeping disorder using hybrid deep learning with ensemble machine learning classifier. *International Journal of Intelligent Systems and Applications in Engineering, 11*(10 Suppl.), 113-129. https://ijisae.org/index.php/IJISAE/article/view/3239
 
-        Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., … Stanley, H. E. (n.d.). *University College Dublin Sleep Apnea Database (UCDDB)* [Data set]. PhysioNet. https://archive.physionet.org/physiobank/database/ucddb/
+        Goldberger, A. L., Amaral, L. A. N., Glass, L., Hausdorff, J. M., Ivanov, P. C., Mark, R. G., … Stanley, H. E. (n.d.). *University College Dublin Sleep Apnea Database (UCDDB)* [Data set]. PhysioNet. https://archive.physionet.org/physiobank/database/ucddb/
 
-        Khanmohmmadi, S., Khatibi, T., Tajeddin, G., Akhondzadeh, E., & Shojaee, A. (2025). Revolutionizing sleep disorder diagnosis: A multi-task learning approach optimized with genetic and Q-learning techniques. *Scientific Reports, 15*, Article 16603. https://doi.org/10.1038/s41598-025-01893-4
+        Khanmohmmadi, S., Khatibi, T., Tajeddin, G., Akhondzadeh, E., & Shojaee, A. (2025). Revolutionizing sleep disorder diagnosis: A multi-task learning approach optimized with genetic and Q-learning techniques. *Scientific Reports, 15*, Article 16603. https://doi.org/10.1038/s41598-025-01893-4
 
         Li, C., Qi, Y., Ding, X., Zhao, J., Sang, T., & Lee, M. (2022). A deep learning method approach for sleep stage classification with EEG spectrogram. *International Journal of Environmental Research and Public Health, 19*(10), 6322. https://doi.org/10.3390/ijerph19106322
 
-        Monowar, M. M., Nobel, S. M. N., Afroj, M., Hamid, M. A., Uddin, M. Z., Kabir, M. M., & Mridha, M. F. (2025). Advanced sleep disorder detection using multi-layered ensemble learning and advanced data balancing techniques. *Frontiers in Artificial Intelligence, 7*, 1506770. https://doi.org/10.3389/frai.2024.1506770
+        Monowar, M. M., Nobel, S. M. N., Afroj, M., Hamid, M. A., Uddin, M. Z., Kabir, M. M., & Mridha, M. F. (2025). Advanced sleep disorder detection using multi-layered ensemble learning and advanced data balancing techniques. *Frontiers in Artificial Intelligence, 7*, 1506770. https://doi.org/10.3389/frai.2024.1506770
 
         National Sleep Research Resource. (2025). *Sleep Heart Health Study polysomnography EDF files* [Data set]. https://sleepdata.org/datasets/shhs/files/polysomnography/edfs
 
@@ -380,11 +380,11 @@ def show_references():
 
         Tanci, M., & Hekim, M. (2025). Classification of sleep apnea syndrome using the spectrograms of EEG signals and YOLOv8 deep learning model. *PeerJ Computer Science, 11*, e2718. https://doi.org/10.7717/peerj-cs.2718
 
-        Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv*. https://doi.org/10.48550/arXiv.1610.01683
+        Tsinalis, O., Matthews, P. M., Guo, Y., & Zafeiriou, S. (2016). Automatic sleep stage scoring with single-channel EEG using convolutional neural networks. *arXiv*. https://doi.org/10.48550/arXiv.1610.01683
 
-        Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2025). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *arXiv*. https://doi.org/10.48550/arXiv.2405.11008
+        Wara, T. U., Fahad, A. H., Das, A. S., & Shawon, M. M. H. (2025). A systematic review on sleep stage classification and sleep disorder detection using artificial intelligence. *arXiv*. https://doi.org/10.48550/arXiv.2405.11008
 
-        Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. *arXiv*. https://doi.org/10.48550/arXiv.2204.06997
+        Zhuang, D., & Ibrahim, A. K. (2022). A machine learning approach to automatic classification of eight sleep disorders. *arXiv*. https://doi.org/10.48550/arXiv.2204.06997
         """)
 
 def show_terminology():

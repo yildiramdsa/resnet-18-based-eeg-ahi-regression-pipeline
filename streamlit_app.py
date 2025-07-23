@@ -54,26 +54,7 @@ def show_literature_review():
 
         While these classification advances are impressive, most **focus on categorical labels rather than continuous severity measures**.
         
-        <span class="inline-badge">Reproduction and Evaluation of Tanci & Hekim (2025) Findings</span> Tanci and Hekim (2025) proposed a four-class sleep apnea staging pipeline that converts 30-second C3-A2 EEG windows into STFT spectrograms, which are then classified by three deep networks—ResNet-64, YOLOv5, and YOLOv8. Each spectrogram is labelled healthy (AHI < 5), mild (5–14.9 events/hr), moderate (15–29.9 events/hr), or severe (≥ 30 events/hr). Against a naïve 25% chance baseline, **YOLOv8 led with 93.7% total correct classification, slightly surpassing ResNet-64's 93.0% and significantly outperforming YOLOv5's 88.2%**. The authors highlight YOLOv8's superior speed and accuracy for real-time, EEG-based apnea staging.
-    
-        Their evaluation utilized data from 25 PhysioBank ATM subjects, focusing solely on the **C3-A2 channel**—a clinically standard single-electrode montage. This choice minimizes preprocessing and model complexity while still capturing the neural oscillations most indicative of respiratory events. The streamlined, single-channel approach offers a compelling balance between performance and practicality for both research and potential clinical deployment.
-        
-        Tanci and Hekim (2025) provided a detailed mathematical foundation for their spectrogram generation approach. The spectrogram represents the frequencies where the energy of the signal is maximum, effectively transforming the two-dimensional EEG waveform into a three-dimensional time-frequency representation. In other words, a spectrogram shows the energy change of a signal over time, defined as the power distribution of the Short-Time Fourier Transform (STFT).
-
-        For the STFT application, a moving window function g(t−τ) is applied to the signal x(t) at time τ. Each window is moved by τ in the time domain, and these changes in the time interval are displayed in the windows. The STFT is mathematically defined as:
-
-        **X(τ,f) = ∫ from -∞ to ∞ of x(t)g(t-τ) * exp(-j2πft) dt**
-
-        Where:  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**x(t)**: Analyzed signal (EEG waveform)  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**g(t−τ)**: Windowing function (Hann window in their implementation)  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**τ**: Time-shifting parameter  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**f**: Frequency parameter  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**exp(-j2πft)**: Complex exponential function used in the Fourier transform
-
-        This integral allows the signal to be analyzed over a given time interval (τ) and at a given frequency (f), enabling simultaneous analysis of both time and frequency information. When g(t−τ) is considered a windowing function, the STFT analyzes both the time and frequency information of a signal simultaneously, providing the foundation for spectrogram generation.
-
-        Their approach follows a comprehensive deep learning classification pipeline, as illustrated in their article, which transforms raw EEG signals through multiple processing stages to produce categorical sleep apnea severity classifications.
+        <span class="inline-badge">Reproduction and Evaluation of Tanci & Hekim (2025) Findings</span> Tanci and Hekim (2025) proposed a **streamlined, single-channel pipeline for four-class sleep apnea staging using 30-second C3-A2 EEG windows**. Each window was converted into a **Hann-windowed STFT spectrogram** and fed into three deep models—**ResNet-64, YOLOv5, and YOLOv8—for classification as healthy (AHI < 5 events/hr), mild (5-14.9 events/hr), moderate (15-29.9 events/hr), or severe (≥ 30 events/hr)**. Evaluated on **25 PhysioBank ATM subjects**, **YOLOv8 led with 93.7% correct classification, slightly outperforming ResNet-64 (93.0%) and significantly surpassing YOLOv5 (88.2%)**. By focusing solely on the C3-A2 channel, the authors minimized preprocessing and model complexity while still capturing critical neural features, demonstrating a balance of accuracy, speed, and practicality for potential real-time clinical use.
 
         *Figure: Tanci & Hekim's (2025) deep learning classification pipeline for sleep apnea severity detection. The process begins with raw EEG signals, which are segmented into 30-second windows, converted to spectrograms for time-frequency analysis, processed through deep learning models, and finally classified into severity categories (normal, mild, moderate, severe).*
         """, unsafe_allow_html=True)

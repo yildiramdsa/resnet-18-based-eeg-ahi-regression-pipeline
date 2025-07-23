@@ -63,9 +63,7 @@ def show_literature_review():
         st.markdown("""
         We replicated Tanci & Hekim's pipeline in four steps: **segment C3-A2 EEG into 30-s windows**, **apply a Hann-window STFT (256-point FFT, 50% overlap) and convert to dB**, **discard any flat epochs**, and **export 150-dpi Viridis PNGs**. We then ran these images through **ResNet-64**, **YOLOv5**, and **YOLOv8** and **compared their accuracy on a balanced hold-out test set of 400 samples (100 per class)**.
         
-        <span class="inline-badge">ResNet64 Performance Analysis</span>. **ResNet64** achieved a balanced accuracy of 85.50%, with macro-averaged precision of 0.8703, recall of 0.8550, and F1-score of 0.8555. The model demonstrated strong discriminative capabilities across all classes, as evidenced by high AUC values ranging from 0.95 to 0.99 and Average Precision values from 0.90 to 0.97.
-
-        **Per-Class Performance Breakdown:**
+        <span class="inline-badge">ResNet64 Performance Analysis</span> **ResNet64** achieved a balanced accuracy of 85.50%, with macro-averaged precision of 0.8703, recall of 0.8550, and F1-score of 0.8555. The model demonstrated strong discriminative capabilities across all classes, as evidenced by high AUC values ranging from 0.95 to 0.99 and Average Precision values from 0.90 to 0.97.
 
         **Severe Apnea** (Best Performance): The model achieved exceptional performance for severe cases with precision = 0.91, recall = 0.92, and F1-score = 0.92. The confusion matrix reveals that 92 out of 100 true severe cases were correctly classified (92.0% accuracy), with only 7% misclassified as mild and 1% as moderate. The ROC curve shows an AUC of 0.99, and the Precision-Recall curve demonstrates an Average Precision of 0.97, indicating near-perfect discriminative power for this critical severity level.
 
@@ -85,9 +83,7 @@ def show_literature_review():
         with col3:
             st.image("assets/ResNet64_pr_curves_balanced.png")
         st.markdown("""
-        <span class="inline-badge">YOLOv5 Performance Analysis</span>. **YOLOv5** outperformed ResNet64 with balanced accuracy of 88.75%, macro precision of 0.8972, recall of 0.8875, and F1 of 0.8887. The model demonstrated exceptional discriminative capabilities across all classes, as evidenced by high AUC values ranging from 0.98 to a perfect 1.00 and robust Average Precision values from 0.95 to 0.99.
-
-        **Per-Class Performance Breakdown:**
+        <span class="inline-badge">YOLOv5 Performance Analysis</span> **YOLOv5** outperformed ResNet64 with balanced accuracy of 88.75%, macro precision of 0.8972, recall of 0.8875, and F1 of 0.8887. The model demonstrated exceptional discriminative capabilities across all classes, as evidenced by high AUC values ranging from 0.98 to a perfect 1.00 and robust Average Precision values from 0.95 to 0.99.
 
         **Normal Cases** (Best Performance): YOLOv5 achieved near-perfect performance for normal cases with precision = 0.99, recall = 0.85, and F1-score = 0.91. The confusion matrix reveals that 85 out of 100 true normal cases were correctly classified, with only 9% misclassified as mild, 4% as moderate, and 2% as severe. The ROC curve shows a perfect AUC of 1.00, and the Precision-Recall curve demonstrates an Average Precision of 0.99, indicating exceptional discriminative power and minimal false positives for normal cases.
 
@@ -107,9 +103,7 @@ def show_literature_review():
         with col3:
             st.image("assets/YOLOv5_pr_curves_balanced.png")
         st.markdown("""
-        <span class="inline-badge">YOLOv8 Performance Analysis</span>. **YOLOv8**, contrary to the original report, yielded a lower balanced accuracy of 72.25%, with macro precision of 0.7409, recall of 0.7225, and F1 score of 0.7247. The model demonstrated moderate discriminative capabilities across all classes, as evidenced by AUC values ranging from 0.89 to 0.95 and Average Precision values from 0.78 to 0.91, significantly underperforming compared to both ResNet64 and YOLOv5.
-
-        **Per-Class Performance Breakdown:**
+        <span class="inline-badge">YOLOv8 Performance Analysis</span> **YOLOv8**, contrary to the original report, yielded a lower balanced accuracy of 72.25%, with macro precision of 0.7409, recall of 0.7225, and F1 score of 0.7247. The model demonstrated moderate discriminative capabilities across all classes, as evidenced by AUC values ranging from 0.89 to 0.95 and Average Precision values from 0.78 to 0.91, significantly underperforming compared to both ResNet64 and YOLOv5.
 
         **Normal Cases** (Best Precision): YOLOv8 achieved the highest precision for normal cases with precision = 0.93, recall = 0.66, and F1-score = 0.77. The confusion matrix reveals that 66 out of 100 true normal cases were correctly classified, with 16% misclassified as mild and 12% as moderate. The ROC curve shows an AUC of 0.95, and the Precision-Recall curve demonstrates an Average Precision of 0.91, indicating good discriminative power for normal cases despite the lower recall.
 
@@ -141,10 +135,9 @@ def show_literature_review():
 
         Our approach offers several key advantages over classification-based methods. The <span class="inline-badge">data leakage prevention</span> through subject-stratified splits ensures realistic validation performance that generalizes to unseen individuals. The <span class="inline-badge">clinical relevance</span> of continuous AHI estimates provides precise severity assessment suitable for treatment planning and monitoring. Comprehensive <span class="inline-badge">quality assurance</span> measures ensure reliable spectrogram generation and model training. Finally, the <span class="inline-badge">scalable design</span> using single-channel EEG makes the pipeline suitable for clinical deployment in various healthcare settings.
         """, unsafe_allow_html=True)
-        st.image("assets/ahi_regression_pipeline.png", use_container_width=True)
-        st.markdown("""
-        *Figure: Overview of the ResNet-18-based EEG AHI regression pipeline. The process begins with raw EEG signals, which are segmented, transformed into spectrograms, processed by a deep learning model, and yield continuous AHI predictions.*
-        """, unsafe_allow_html=True)
+        col1, col2, col3 = st.columns([1, 8, 1])
+        with col2:
+            st.image("assets/ahi_regression_pipeline.png", caption='Overview of the ResNet-18-based EEG AHI regression pipeline. Raw C3-A2 EEG signals were segmented into 30-second windows, transformed into STFT spectrograms, processed by a ResNet-18 regression model, and yielded continuous AHI predictions.', use_container_width=True)
 
 def show_methods():
     col1, col2, col3 = st.columns([1, 8, 1])

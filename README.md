@@ -1,7 +1,7 @@
 # ResNet-18-Based EEG AHI Regression Pipeline
 
 **Tech Stack:**
-![ResNet18](https://img.shields.io/badge/ResNet18-EE4C2C?logo=pytorch&logoColor=white)
+![ResNet18](https://img.shields.io/badge/ResNet18-D00000?logo=pytorch&logoColor=white)
 ![ResNet50](https://img.shields.io/badge/ResNet50-EE4C2C?logo=pytorch&logoColor=white)
 ![YOLOv5](https://img.shields.io/badge/YOLOv5-FF9900?logo=pytorch&logoColor=white)
 ![YOLOv8](https://img.shields.io/badge/YOLOv8-0072C6?logo=pytorch&logoColor=white)

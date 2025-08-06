@@ -328,7 +328,7 @@ def show_terminology():
         """, unsafe_allow_html=True)
 
 def main():
-    st.title("ResNet-18-Based EEG AHI Regression Pipeline")
+    st.title("Sleep-Apnea Severity Estimation from EEG Spectrograms via ResNet-18")
 
     st.markdown("""
     <style>

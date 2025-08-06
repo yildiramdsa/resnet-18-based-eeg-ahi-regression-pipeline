@@ -1,6 +1,6 @@
 import streamlit as st
 
-PAGE_TITLE = "ResNet-18-Based EEG AHI Regression Pipeline"
+PAGE_TITLE = "Sleep-Apnea Severity Estimation from EEG Spectrograms via ResNet-18"
 
 st.set_page_config(
     page_title=PAGE_TITLE,
